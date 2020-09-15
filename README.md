@@ -75,7 +75,7 @@ src
       |__ Desktop_only
            |__ CardFlexbox.jsx
            |__ card.jsx
-      |__ AppointmentFinder.jsx
+      |__ AppointmentFinder
            |__Calendar
               |__build.js
               |__header.jsx
@@ -88,10 +88,14 @@ src
               |__table.jsx
               |__timeslot.jsx
       |__ TimeGnosticSchedule
-           |__ Schedule.jsx      
+           |__ Schedule.jsx
+      |__ Login
+|__ containers
+     |__MainContainer.jsx
 |__ layouts
       |__Layout.jsx
 |__ services/
+   |__availability.js
 
 ```
 
@@ -110,11 +114,13 @@ src
 #### Time Estimates
 
 
-| Task                | Priority | Estimated Time | Time Invested | Actual Time |
-| ------------------- | :------: | :------------: | :-----------: | :---------: |
-| Add Contact Form    |    L     |     3 hrs      |     2 hrs     |    3 hrs    |
-| Create CRUD Actions |    H     |     3 hrs      |     1 hrs     |     TBD     |
-| TOTAL               |          |     6 hrs      |     3 hrs     |     TBD     |
+| Task                            | Priority  | Estimated Time | Time Invested | Actual Time |
+| -------------------             | :------:  | :------------: | :-----------: | :---------: |
+| Back-end models/routes/endpoints|    H      |      2 hrs     |               |             |
+| Authentication services         |    M      |      2 hrs     |               |             |
+| Seed database                   |    H      |      1 hr      |               |             |
+| Main-container/front routes     |    H      |       x         |     x        |             |            
+| TOTAL                            |          |     6 hrs      |     3 hrs     |     TBD     |
 
 <br>
 
