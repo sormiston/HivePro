@@ -35,21 +35,19 @@ _The **HivePro Space Manager** will allow users to book studio time and the chec
 
 ### Goals
 
-See MoSCoW diagram (second tab) at: https://app.lucidchart.com/invitations/accept/c01bc248-e912-4cbb-9ecd-1ff195402c45
+See MoSCoW diagram (second tab) at: https://app.lucidchart.com/invitations/accept/e61861fc-fb33-41a1-9e64-bc25156d0e69
 
 <br>
 
 ### Libraries and Dependencies
 
-> Use this section to list all supporting libraries and dependencies, and their role in the project. Below is an example - this needs to be replaced!
-
-|     Library      | Description                                |
-| :--------------: | :----------------------------------------- |
-|      React       | _Lorem ipsum dolor sit amet, consectetur._ |
-|   React Router   | _Lorem ipsum dolor sit amet, consectetur._ |
-| React SemanticUI | _Lorem ipsum dolor sit amet, consectetur._ |
-|     Express      | _Lorem ipsum dolor sit amet, consectetur._ |
-|  Express Router  | _Lorem ipsum dolor sit amet, consectetur._ |
+|     Library      | Description                                   |
+| :--------------: | :-----------------------------------------    |
+|      React       | Front-end framework                           |
+|   React Router   | Multi-page navigability framework             |
+| React MaterialUI | Ready-made standardized UI tables and buttons |
+|     Rails        | Back-end framework |
+|    Moment.js     | JS library for improved date-time handling    |
 
 <br>
 
@@ -57,35 +55,10 @@ See MoSCoW diagram (second tab) at: https://app.lucidchart.com/invitations/accep
 
 #### Wireframes
 
-> Use the Wireframes section to display desktop, tablet and mobile views. No hand-drawn wireframes. Use a tool like wireframe.cc, Whimsical or AdobeXD
-
-![Dummy Link](url)
-
-- Desktop Landing
-
-![Dummy Link](url)
-
-- Desktop Hero
-
-![Dummy Link](url)
-
-- Resource Index
-
-![Dummy Link](url)
-
-- Resource Show
-
-![Dummy Link](url)
-
-- Tablet Resource Index
-
-![Dummy Link](url)
-
-- Mobile Resource Index
+https://www.figma.com/file/zhlQ7ffDwMQgsFVVcElRbT/P4?node-id=13%3A4
 
 #### Component Tree
 
-> Use this section to display the structure of how your React components are being rendered. This should show the parent to child relation between you components. In other words, show which components are rendering the other components. 
 
 #### Component Hierarchy
 
@@ -94,13 +67,30 @@ See MoSCoW diagram (second tab) at: https://app.lucidchart.com/invitations/accep
 ``` structure
 
 src
-|__ assets/
-      |__ fonts
-      |__ graphics
-      |__ images
-      |__ mockups
 |__ components/
-      |__ Header.jsx
+      |___Header.jsx
+      |__ Welcome_Hero.jsx
+      |__ Mobile_only
+           |__ Carousel.jsx
+      |__ Desktop_only
+           |__ CardFlexbox.jsx
+           |__ card.jsx
+      |__ AppointmentFinder.jsx
+           |__Calendar
+              |__build.js
+              |__header.jsx
+              |__index.js
+           |__ check.jsx
+           |__ timeFilter.jsx
+      |__ TimeAgnosticSchedule
+           |__ Screen.jsx
+           |__ Schedule
+              |__table.jsx
+              |__timeslot.jsx
+      |__ TimeGnosticSchedule
+           |__ Schedule.jsx      
+|__ layouts
+      |__Layout.jsx
 |__ services/
 
 ```
@@ -119,15 +109,12 @@ src
 
 #### Time Estimates
 
-> Use this section to estimate the time necessary to build out each of the components you've described above.
 
 | Task                | Priority | Estimated Time | Time Invested | Actual Time |
 | ------------------- | :------: | :------------: | :-----------: | :---------: |
 | Add Contact Form    |    L     |     3 hrs      |     2 hrs     |    3 hrs    |
 | Create CRUD Actions |    H     |     3 hrs      |     1 hrs     |     TBD     |
 | TOTAL               |          |     6 hrs      |     3 hrs     |     TBD     |
-
-> _Why is this necessary? Time frames are key to the development cycle. You have limited time to code your app, and your estimates can then be used to evaluate possibilities of your MVP and post-MVP based on time needed. It's best you assume an additional hour for each component, as well as a few hours added to the total time, to play it safe._
 
 <br>
 
@@ -143,8 +130,7 @@ https://app.lucidchart.com/documents/edit/2a7496c7-2e0e-4dee-8ee9-4da4c8f41b5d/0
 
 ## Post-MVP
 
-See MosCoW
-
+See MosCoW tab: https://app.lucidchart.com/invitations/accept/e61861fc-fb33-41a1-9e64-bc25156d0e69
 ***
 
 ## Code Showcase
