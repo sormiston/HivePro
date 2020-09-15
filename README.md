@@ -82,18 +82,24 @@ src
               |__index.js
            |__ check.jsx
            |__ timeFilter.jsx
-      |__ TimeAgnosticSchedule
-           |__ Screen.jsx
+      |__ TimeAgnosticBooker
            |__ Schedule
               |__table.jsx
               |__timeslot.jsx
-      |__ TimeGnosticSchedule
+      |__ TimeGnosticBooker
            |__ Schedule.jsx
       |__ Login
 |__ containers
      |__MainContainer.jsx
 |__ layouts
       |__Layout.jsx
+|__screens
+   |__ Main.jsx
+   |__ SignUp.jsx
+   |__ LogIn.jsx
+   |__GreenRoom.jsx
+   |__Booker.jsx
+   
 |__ services/
    |__availability.js
 
@@ -116,11 +122,26 @@ src
 
 | Task                            | Priority  | Estimated Time | Time Invested | Actual Time |
 | -------------------             | :------:  | :------------: | :-----------: | :---------: |
-| Back-end models/routes/endpoints|    H      |      2 hrs     |               |             |
-| Authentication services         |    M      |      2 hrs     |               |             |
+| Back-end models/routes/endpoints|    H      |      2 hr     |               |             |
+| Authentication services         |    M      |      2 hr     |               |             |
 | Seed database                   |    H      |      1 hr      |               |             |
-| Main-container/front routes     |    H      |       x         |     x        |             |            
-| TOTAL                            |          |     6 hrs      |     3 hrs     |     TBD     |
+| Main-container/front routes     |    H      |      2 hr      |     x        |             |
+| Asset gathering + installation  |   M       |     3 hr        |             |               |
+| Axios services w. dtime handle  |   H       |     2 hr         |             |             |
+| Availability calc services      |   H       |     2 hr        |             |             |
+| Time Gnostic Booker (C)         |    H      |     3 hr        |             |             |
+| Time Agnostic Booker (C)        |    M      |     5 hr        |             |              |
+| Appointment Finder w/o Calendar |    H      |     4 hr        |             |               |
+| Calendar conditional rendering  |    M      |     2 hr        |             |               |
+| Green Room (UD)                 |   H       |     2 hr        |             |               |
+| Registration and Login screens  |   M       |     3 hr        |             |               |
+| Card component + styling        |   M       |     3 hr        |             |               |
+| CardFlex+Welcome - resp. display|   M       |     2.5 hr      |             |               |
+| Carousel - resp. display        |   M       |     3 hr        |             |               |
+| Media breaks + site-wide styles |   M       |     3 hr        |             |               |
+| Stress testing + optimizations  |   M       |     4 hr        |             |               |
+
+| TOTAL                            |          |     48.5 hrs    |     3 hrs     |     TBD     |
 
 <br>
 
