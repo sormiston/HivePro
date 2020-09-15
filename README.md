@@ -135,7 +135,7 @@ src
 
 #### ERD Model
 
-> Use this section to display an image of a computer generated ERD model. You can use draw.io, Lucidchart or another ERD tool.
+https://app.lucidchart.com/documents/edit/2a7496c7-2e0e-4dee-8ee9-4da4c8f41b5d/0_0?beaconFlowId=52BDAC65AE83A252#?folder_id=home&browser=icon
 
 <br>
 
@@ -143,9 +143,7 @@ src
 
 ## Post-MVP
 
-- Add an admin function that manages the allocation of movable equipment.  This will take the form of a map display that visually juxtaposes the current location of an item against where that item must be at a given time of day.  Depending on the time of day, required movements will be summarized in an itinerary readout, with clickable buttons to mark the movement "complete" and update the items location.  This screen will only be accessible with an administrative login.
-
-- Offer functionality to secure regular time slots to users who take subscription offer
+See MosCoW
 
 ***
 
