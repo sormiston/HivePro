@@ -122,11 +122,11 @@ src
 
 | Task                            | Priority  | Estimated Time | Time Invested | Actual Time |
 | -------------------             | :------:  | :------------: | :-----------: | :---------: |
-| Back-end models/routes/endpoints|    H      |      2 hr     |               |             |
+| Back-end models/routes/endpoints|    H      |      2 hr     |      4hr        |             |
 | Authentication services         |    M      |      2 hr     |               |             |
 | Seed database                   |    H      |      1 hr      |               |             |
 | Main-container/front routes     |    H      |      2 hr      |     x        |             |
-| Asset gathering + installation  |   M       |     3 hr        |             |               |
+| Asset gathering + installation  |   M       |     3 hr        |      1.5hr  |      1.5hr   |
 | Axios services w. dtime handle  |   H       |     2 hr         |             |             |
 | Availability calc services      |   H       |     2 hr        |             |             |
 | Time Gnostic Booker (C)         |    H      |     3 hr        |             |             |
