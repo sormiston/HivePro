@@ -13,17 +13,24 @@ Band.destroy_all
 User.destroy_all
 Room.destroy_all
 
-user_seed_file = File.read('./db/user_seed_data.json')
-user_data_hash = JSON.parse(user_seed_file)
+room_seed_file = File.read('./db/room_seed_data.json')
+room_data_hash = JSON.parse(room_seed_file)
 band_seed_file = File.read('./db/band_seed_data.json')
-band_seed_hash = JSON.parse(band_seed_file)
+band_data_hash = JSON.parse(band_seed_file)
 
-band_seed_hash.each do |x|
+band_data_hash.each do |x|
   generate = Band.create(**x)
   p generate
 end
 
+room_data_hash.each do |x|
+  generate = Room.create(**x)
+  p generate
+end
+
 p "#{Band.count} bands created!"
+p "#{Room.count} rooms created!"
+
 
 # user_data_hash.each do |obj|
 #   generate = User.create!({**obj})

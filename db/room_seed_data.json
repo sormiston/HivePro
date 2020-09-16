@@ -1,3 +1,53 @@
 [
   
+  {
+    "room_num": "1A",
+    "sq_footage": "12' x 15'",
+    "hourly_rt": "$30/hr (Days), $40/hr (Evenings)",
+    "fixed_equipment": "Yamaha Tour Custom drum kit; Marshall JCM 800; Fender Twin Reverb; Young Chang Acoustic Upright Piano; Roland JC120; Peavey Mark III Bass Amp; PA System: Mackie 8 channel digital mixer (graphic EQ, onboard effects, gain control, phantom powered); 2 Shure SM 58 Microphones; Congas; Roland VR-730",
+      "max_cap": 5,
+      "img_url": "https://images.squarespace-cdn.com/content/v1/58fa6ab446c3c493b8941bae/1570316137608-GWQNQCODKV55I1LA3YW2/ke17ZwdGBToddI8pDm48kOggE0Ch6pMGalwtLMqzsSB7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1Ufo5RWkg_J4of0jUNHaDHx6pZKBvpVYzidBWCapg0tuoMuEaB2HPGSYDV-11UTcW2g/IMG_2474.jpg?format=1500w"
+  },
+  
+  {
+    "room_num": "1B",
+    "sq_footage": "9' x 15'",
+    "hourly_rt": "$22/hr (Days), $32/hr (Evenings)",
+    "fixed_equipment": "Yamaha Tour Custom drum kit; Marshall JCM 900; Fender Twin Reverb; Roland JC120; Peavey Mark VI Bass Amp; PA System: Mackie 8 channel digital mixer (graphic EQ, onboard effects, gain control, phantom powered); 2 Shure SM 58 Microphones; Congas",
+      "max_cap": 4,
+      "img_url": "https://images.squarespace-cdn.com/content/v1/58fa6ab446c3c493b8941bae/1570317120140-HOS5UHZJ1GQ4LOQS44Q2/ke17ZwdGBToddI8pDm48kP0x04V1XEe0XPzqOX1MKaR7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QHyNOqBUUEtDDsRWrJLTmjw4y9jm25X_CplAKqpK2fkSw6YcmP1xW_gG8HCptQz72szHi8Rk0JAosDC56jamZ/IMG_2495.jpg?format=750w"
+  },
+  {
+  "room_num": "2",
+  "sq_footage": "17' x 27'",
+  "hourly_rt": "$40/hr (Days), $50/hr (Evenings)",
+  "fixed_equipment": "Yamaha Tour Custom drum kit; Marshall JCM 900; Marshall JCM 800; Roland JC120; Fender Twin Reverb; Peavey Classic 50 Tube Guitar Combo Amp; Ampeg SVT 350 Bass Amp; PA System: Mackie 8 channel digital mixer (graphic EQ, onboard effects, gain control, phantom powered); 3 Shure SM 58 Microphones; Roland VR-730; Congas",
+    "max_cap": 12,
+    "img_url": "https://images.squarespace-cdn.com/content/v1/58fa6ab446c3c493b8941bae/1566761680478-IOEE9YW53BOQ2LTG93RQ/ke17ZwdGBToddI8pDm48kLkXF2pIyv_F2eUT9F60jBl7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0iyqMbMesKd95J-X4EagrgU9L3Sa3U8cogeb0tjXbfawd0urKshkc5MgdBeJmALQKw/IMG_0828.JPG?format=1500w"
+  },
+  {
+    "room_num": "3",
+    "sq_footage": "18' x 16'",
+    "hourly_rt": "$35/hr (Days), $45/hr (Evenings)",
+    "fixed_equipment": "Yamaha Tour Custom drum kit; Marshall JCM 800; Fender Twin Reverb; Roland JC120; Peavey Mark III Bass Amp; PA System: Mackie 8 channel digital mixer (graphic EQ, onboard effects, gain control, phantom powered); 2 Shure SM 58 Microphones; Congas; Roland VR-730",
+      "max_cap": 6,
+      "img_url": "https://images.squarespace-cdn.com/content/v1/58fa6ab446c3c493b8941bae/1570323552742-EPT1524TTA1FC63FRMT4/ke17ZwdGBToddI8pDm48kOggE0Ch6pMGalwtLMqzsSB7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1Ufo5RWkg_J4of0jUNHaDHx6pZKBvpVYzidBWCapg0tuoMuEaB2HPGSYDV-11UTcW2g/IMG_2648.jpg?format=1500w"
+  },
+  {
+    "room_num": "4",
+    "sq_footage": "20' x 16'",
+    "hourly_rt": "$35/hr (Days), $45/hr (Evenings)",
+    "fixed_equipment": "Yamaha Tour Custom drum kit; Marshall JCM 800; Fender Twin Reverb; Roland JC120; Peavey Mark III Bass Amp; PA System: Mackie 8 channel digital mixer (graphic EQ, onboard effects, gain control, phantom powered); 2 Shure SM 58 Microphones; Congas; Roland VR-730",
+      "max_cap": 6,
+      "img_url": "https://images.squarespace-cdn.com/content/v1/58fa6ab446c3c493b8941bae/1570321818265-TTYBFPIXIK7BHVYX9YVF/ke17ZwdGBToddI8pDm48kOggE0Ch6pMGalwtLMqzsSB7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1Ufo5RWkg_J4of0jUNHaDHx6pZKBvpVYzidBWCapg0tuoMuEaB2HPGSYDV-11UTcW2g/IMG_2560.jpg?format=1500w"
+  },
+  {
+    "room_num": "5R",
+    "sq_footage": "22 ' x 38'",
+    "hourly_rt": "$50/hr (Days), $60/hr (Evenings)",
+    "fixed_equipment": "Yamaha Tour Custom drum kit; Marshall JCM 800; Fender Twin Reverb; Roland JC120; Peavey Mark III Bass Amp; PA System: Mackie 8 channel digital mixer (graphic EQ, onboard effects, gain control, phantom powered); 2 Shure SM 58 Microphones; Congas; Roland VR-730",
+      "max_cap": 14,
+      "img_url": "https://images.squarespace-cdn.com/content/v1/58fa6ab446c3c493b8941bae/1577652630090-N146HD58EK0GFF37PDLT/ke17ZwdGBToddI8pDm48kOggE0Ch6pMGalwtLMqzsSB7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1Ufo5RWkg_J4of0jUNHaDHx6pZKBvpVYzidBWCapg0tuoMuEaB2HPGSYDV-11UTcW2g/IMG_3136.jpg?format=1500w"
+  }
+  
 ]
