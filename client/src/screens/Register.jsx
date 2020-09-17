@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { getBands } from "../services/CRUD";
+import { getBandNames } from "../services/CRUD";
 
 export default function Register(props) {
   const [bandNames, setBandNames] = useState([])
@@ -13,11 +13,12 @@ export default function Register(props) {
     acct_holder: false
   })
   
-  useEffect(async () => {
-    const res = await getBands()
-    return () => {
-      cleanup
+  useEffect(() => {
+    const loadBandNames = async () => {
+      const res = await getBandNames()
+      setBandNames(res)
     }
+    loadBandNames()
   }, [])
 
   
