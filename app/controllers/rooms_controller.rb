@@ -1,6 +1,7 @@
 class RoomsController < ApplicationController
   before_action :set_room, only: [:show, :update, :destroy]
 
+
   # GET /rooms
   def index
     @rooms = Room.all
