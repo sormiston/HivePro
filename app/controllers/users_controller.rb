@@ -16,7 +16,11 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
-    @user = User.new(user_params)
+    @band = Band.find(user_params[:band].to_i)
+    puts user_params[:band]
+    mod_params = {**user_params, band: @band}
+    puts mod_params[:band]
+    @user = User.new(mod_params)
 
     if @user.save
       @token = encode({ id: @user.id })
@@ -52,6 +56,6 @@ class UsersController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :references, :email, :password, :password_confirmation, :acct_holder)
+    params.require(:user).permit(:first_name, :last_name, :email, :band, :password, :password_confirmation, :acct_holder)
   end
 end

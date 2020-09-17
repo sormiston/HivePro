@@ -4,7 +4,7 @@ class BandsController < ApplicationController
   # GET /bands/names
   
   def band_names
-    @band_names = Band.pluck(:name)
+    @band_names = Band.pluck(:name, :id)
     @band_names.sort!
     
     render json: @band_names
