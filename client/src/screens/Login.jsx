@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import { loginUser, registerUser } from '../services/auth'
-
 export default function Login(props) {
   const [formData, setFormData] = useState({
     email: '',

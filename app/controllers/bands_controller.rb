@@ -1,6 +1,16 @@
 class BandsController < ApplicationController
   before_action :set_band, only: [:show, :update, :destroy]
 
+  # GET /bands/names
+  
+  def band_names
+    @band_names = Band.pluck(:name)
+    @band_names.sort!
+    
+    render json: @band_names
+  end
+  
+  # AUTO-MAGIC ...
   # GET /bands
   def index
     @bands = Band.all

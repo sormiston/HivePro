@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   post '/auth/login', to: 'authentication#login'
   get '/auth/verify', to: 'authentication#verify'
-  
+  get '/bands/names', to: 'bands#band_names'
   resources :rooms
   resources :appointments
   resources :users
