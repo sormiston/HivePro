@@ -16,10 +16,8 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
-    @band = Band.find(user_params[:band].to_i)
-    puts user_params[:band]
+    @band = Band.find(user_params[:band].to_i) 
     mod_params = {**user_params, band: @band}
-    puts mod_params[:band]
     @user = User.new(mod_params)
 
     if @user.save
