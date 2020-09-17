@@ -58,7 +58,7 @@ export default function Register(props) {
 
       <br />
       <label htmlFor="band">Which band?</label>
-      <select name="band" id="band">
+      <select name="band" id="band" onChange={handleChange}>
         <option selected disabled>-- Choose wisely --</option>
         {bandNames.map((name) => (
           <option value={name}>{name}</option>
