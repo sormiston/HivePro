@@ -1,6 +1,7 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import { Switch, Route, useHistory } from 'react-router-dom'
 import './App.css';
+import Login from './screens/Login'
 
 function App() {
   return (
