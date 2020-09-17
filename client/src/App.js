@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Switch, Route, useHistory } from 'react-router-dom'
 import './App.css'
 import Login from './screens/Login'
+import MainContainer from './containers/MainContainer'
 import {
   loginUser,
   registerUser,
@@ -44,6 +45,9 @@ function App() {
       <Switch>
         <Route path='/login'>
           <Login loginSubmit={loginSubmit} />
+        </Route>
+        <Route>
+          
         </Route>
       </Switch>
     </div>
