@@ -11,6 +11,7 @@ export default function timeFilter(props) {
   return (
     <div>
       <select name="sessionStart" id="sessionStart">
+        <option defaultValue>Session Start</option>
         <option value="12:00PM">12:00PM</option>
      </select>
     </div>
