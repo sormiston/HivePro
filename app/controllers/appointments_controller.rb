@@ -20,7 +20,7 @@ class AppointmentsController < ApplicationController
     @band = Band.find(appointment_params[:band].to_i)
     mod_params = { **appointment_params, room: @room, band: @band }
     puts mod_params
-    @appointment = Appointment.new(mod_params)
+    @appointment = Appointment.create(mod_params)
 
     if @appointment.save
       render json: @appointment, status: :created, location: @appointment
