@@ -34,15 +34,14 @@ export default function Login(props) {
       />
 
       <br />
-      <label htmlFor="password">
-        Password:
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handleChange}
-        />
-      </label>
+      <label htmlFor="password">Password:</label>
+      <input
+        type="password"
+        name="password"
+        value={password}
+        onChange={handleChange}
+      />
+
       <br />
       <small>What...no login?</small>
       <Link to="/register">Register</Link>
