@@ -4,14 +4,16 @@ class AuthenticationController < ApplicationController
   # POST /auth/login
   def login
     @user = User.find_by(email: login_params[:email])
-    if @user.authenticate(login_params)
+    puts @user
+    if @user.authenticate(login_params[:password])
+      
       token = encode({ id: @user.id })
       render json: {
         user: @user.attributes.except(:password_digest),
         token: token
       }, status: :ok
     else
-      render json: { errors: 'unauthorized', status: :unauthorized }
+      render json: { user: @user, errors: 'unauthorized', status: :unauthorized }
     end
   end
 
