@@ -1,0 +1,10 @@
+[
+  {
+  "first_name": "Lenny",
+  "last_name": "Krazowitz",
+  "band": "Warhorse",
+  "email": "Lkraz@band.com",
+  "password": "123456",
+  "acct_holder": true
+}
+]

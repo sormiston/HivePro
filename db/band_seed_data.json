@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Warhorse",
+    "num_members": 5,
+    "font": "Georgia"
+  },
+  {
+    "name": "Borealis Bassoon Quartet",
+    "num_members": 4,
+    "font": "Times New Roman"
+  },
+  {
+    "name": "Tinariwen",
+    "num_members": 7,
+    "font": "Comic Sans MS"
+  },
+  {
+    "name": "The Skaggertons",
+    "num_members": 4,
+    "font": "Impact"
+  },
+  {
+    "name": "Liberation Orchestra",
+    "num_members": 12,
+    "font": "Verdana"
+  }
+]
