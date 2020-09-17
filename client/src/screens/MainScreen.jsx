@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 
 
-import CalendarControl from '../components/AppointmentFinder/CalendarControl'
+import CheckAvail from '../components/AppointmentFinder/CheckAvail'
 
 export default function MainScreen(props) {
   const { currentUser, currentTime } = props
   
   return (
     <div>
-      <h1>Check availability by date...</h1>
-      <CalendarControl currentUser={currentUser} currentTime={currentTime}/>
+      
+      <CheckAvail currentUser={currentUser} currentTime={currentTime}/>
     </div>
   )
 }

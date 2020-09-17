@@ -10,16 +10,16 @@ import CalendarHeader from './Header'
 // credit Mark Tellez - "devmentorlive"
 // https://www.youtube.com/watch?v=5jRrVqRWqsM
 
-export default function Calendar({ value, onChange }) {
+export default function Calendar(props) {
   const [calendar, setCalendar] = useState([])
-  
+  const { value, setValue } = props
   useEffect(() => {
     setCalendar(buildCalendar(value))
   }, [value])
 
   return (
     <div className='calendar'>
-      <CalendarHeader value={value} setValue={onChange} />
+      <CalendarHeader value={value} setValue={setValue} />
       <div className='body'>
         <div className='day-names'>
           {['s', 'm', 't', 'w', 't', 'f', 's'].map((d) => (
@@ -31,7 +31,7 @@ export default function Calendar({ value, onChange }) {
             {week.map((day) => (
               <div
                 className='day'
-                onClick={() => !beforeToday(day) && onChange(day)}
+                onClick={() => !beforeToday(day) && setValue(day)}
               >
                 <div className={dayStyles(day, value)}>{day.format('D')}</div>
               </div>
