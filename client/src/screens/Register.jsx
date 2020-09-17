@@ -10,6 +10,7 @@ export default function Register(props) {
     band: "",
     email: "",
     password: "",
+    password_confirmation: "",
     acct_holder: false,
   });
 
@@ -21,7 +22,7 @@ export default function Register(props) {
     loadBandNames();
   }, []);
 
-  const { first_name, last_name, band, email, password } = formData;
+  const { first_name, last_name, band, email, password, password_confirmation } = formData;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -59,9 +60,11 @@ export default function Register(props) {
       <br />
       <label htmlFor="band">Which band?</label>
       <select name="band" id="band" onChange={handleChange}>
-        <option selected disabled>-- Choose wisely --</option>
-        {bandNames.map((name) => (
-          <option value={name}>{name}</option>
+        <option defaultValue>
+          -- Choose wisely --
+        </option>
+        {bandNames.map((el) => (
+          <option key={el[1]} value={el[1]}>{el[0]}</option>
         ))}
       </select>
 
@@ -81,6 +84,15 @@ export default function Register(props) {
         type="password"
         name="password"
         value={password}
+        onChange={handleChange}
+      />
+
+      <br />
+      <label htmlFor="password_confirmation">Password Confirmation:</label>
+      <input
+        type="password"
+        name="password_confirmation"
+        value={password_confirmation}
         onChange={handleChange}
       />
 
