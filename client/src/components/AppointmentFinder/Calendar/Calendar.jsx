@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import './styles.css'
 import buildCalendar from './build'
 import dayStyles, { beforeToday } from './styles'
-import CalendarHeader from './Header'
+import CalendarHeader from './HeaderNAMETRICK'
 
 // CALENDAR FUNCTION from LIVE TUTORIAL CODE-ALONG
 // credit Mark Tellez - "devmentorlive"
