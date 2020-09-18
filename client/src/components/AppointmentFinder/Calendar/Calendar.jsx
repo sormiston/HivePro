@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 
-
 import './styles.css'
 import buildCalendar from './build'
 import dayStyles, { beforeToday } from './styles'
@@ -22,18 +21,23 @@ export default function Calendar(props) {
       <CalendarHeader value={value} setValue={setValue} />
       <div className='body'>
         <div className='day-names'>
-          {['s', 'm', 't', 'w', 't', 'f', 's'].map((d) => (
-            <div className='week'>{d}</div>
+          {['s', 'm', 't', 'w', 't', 'f', 's'].map((d, i) => (
+            <div key={i} className='week'>
+              {d}
+            </div>
           ))}
         </div>
-        {calendar.map((week) => (
-          <div>
-            {week.map((day) => (
+        {calendar.map((week, i) => (
+          <div key={i}>
+            {week.map((day, i) => (
               <div
+                key={i}
                 className='day'
                 onClick={() => !beforeToday(day) && setValue(day)}
               >
-                <div className={dayStyles(day, value)}>{day.format('D')}</div>
+                <div className={dayStyles(day, value)}>
+                  {day.format('D')}
+                </div>
               </div>
             ))}
           </div>

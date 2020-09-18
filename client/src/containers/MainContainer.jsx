@@ -7,6 +7,6 @@ export default function MainContainer(props) {
   const [currentDateTime, setCurrentDateTime] = useState(moment())
   const { currentUser } = props
   return (
-    <MainScreen currentUser={currentUser} currentTime={currentDateTime} set/> 
+    <MainScreen currentUser={currentUser} currentDateTime={currentDateTime} set/> 
   )
 }

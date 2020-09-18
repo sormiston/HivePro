@@ -9,7 +9,7 @@ export default function MainScreen(props) {
   return (
     <div>
       
-      <CheckAvail currentUser={currentUser} currentTime={currentDateTime}/>
+      <CheckAvail currentUser={currentUser} currentDateTime={currentDateTime}/>
     </div>
   )
 }
