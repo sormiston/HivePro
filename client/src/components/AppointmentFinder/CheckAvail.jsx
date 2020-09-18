@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Calendar from './Calendar/Calendar'
-import TimeFilter from './TimeFilterNAMETRICK'
+import TimeFilter from './TimeFilter'
 import GnosticDisplay from '../Booker/TimeGnostic/display'
 import { getAppointments } from '../../services/CRUD'
 import './calendarRootStyles.css'
