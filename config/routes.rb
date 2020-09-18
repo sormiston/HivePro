@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   post '/auth/login', to: 'authentication#login'
   get '/auth/verify', to: 'authentication#verify'
-  
+  get '/bands/names', to: 'bands#band_names'
+  get '/appointments/filter/:iso8601', to: 'appointments#index'
   resources :rooms
   resources :appointments
   resources :users

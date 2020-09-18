@@ -10,20 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_16_190921) do
+ActiveRecord::Schema.define(version: 2020_09_18_012955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "appointments", force: :cascade do |t|
-    t.bigint "user_id", null: false
     t.bigint "room_id", null: false
-    t.datetime "booking_start"
-    t.datetime "booking_end"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "band_id", null: false
+    t.datetime "booking_hour_start"
+    t.integer "hours_booked"
+    t.index ["band_id"], name: "index_appointments_on_band_id"
     t.index ["room_id"], name: "index_appointments_on_room_id"
-    t.index ["user_id"], name: "index_appointments_on_user_id"
   end
 
   create_table "bands", force: :cascade do |t|
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 2020_09_16_190921) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "appointments", "bands"
   add_foreign_key "appointments", "rooms"
-  add_foreign_key "appointments", "users"
   add_foreign_key "users", "bands"
 end

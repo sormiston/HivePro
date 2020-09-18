@@ -7,11 +7,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'json'
-# require 'faker'
+require 'date'
+require 'time'
 
 Band.destroy_all
 User.destroy_all
 Room.destroy_all
+Appointment.destroy_all
 
 user_seed_file = File.read('./db/user_seed_data.json')
 user_data_hash = JSON.parse(user_seed_file)
@@ -19,6 +21,7 @@ room_seed_file = File.read('./db/room_seed_data.json')
 room_data_hash = JSON.parse(room_seed_file)
 band_seed_file = File.read('./db/band_seed_data.json')
 band_data_hash = JSON.parse(band_seed_file)
+
 
 band_data_hash.each do |hash|
   generate = Band.create(**hash)
@@ -40,3 +43,54 @@ end
 p "#{Band.count} bands created!"
 p "#{Room.count} rooms created!"
 p "#{User.count} users created!"
+
+def generate_day_of_appts(d)
+  bands = Band.all[1..-1]
+  band.each do |band|
+    d = DateTime.new(d.year, d.month, d.day, rand(12..20))
+    generate = Appointment.create!(
+            room: Room.all[rand(Room.count)],
+            band: band,
+            booking_hour_start: d,
+            hours_booked: 2
+          )
+          generate.save
+  end
+  
+  # s = 12
+  # e = 18
+  # 2.times do
+  #   rooms = Room.all
+  #   rooms.each do |room|
+  #     d = DateTime.new(d.year, d.month, d.day, rand(s...e))
+  #     generate = Appointment.create!(
+  #       room: room,
+  #       band: Band.all[rand(Band.count)],
+  #       booking_hour_start: d,
+  #       hours_booked: 2
+  #     )
+  #     generate.save
+  #   end
+  #   s += 6
+  #   e += 6
+  # end
+end
+
+cdt = DateTime.now
+# d = DateTime.new(cdt.year, cdt.month, cdt.day)
+
+10.times do
+  cdt = cdt.next_day
+generate_day_of_appts(cdt)
+end
+
+p "#{Appointment.count} appointments created!"
+
+appointments = Appointment.all
+
+appointments.each do |appt|
+  appt.destroy if appt[:booking_hour_start].saturday? 
+  appt.destroy if appt[:booking_hour_start].sunday? 
+end
+
+p "Appointments hedged to #{Appointment.count} due to weekends!"

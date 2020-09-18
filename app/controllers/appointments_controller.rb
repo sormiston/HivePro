@@ -1,10 +1,15 @@
+require 'date'
+
 class AppointmentsController < ApplicationController
   before_action :set_appointment, only: %i[show update destroy]
   before_action :authorize_request, except: :index
 
-  # GET /appointments
+  # GET /appointments/filter/:iso8601
   def index
-    @appointments = Appointment.all
+    @start = Date.parse(params[:iso8601])
+    @end = @start.next_day
+
+    @appointments = Appointment.where('booking_hour_start BETWEEN ? AND ?', @start, @end)
 
     render json: @appointments
   end
@@ -16,7 +21,11 @@ class AppointmentsController < ApplicationController
 
   # POST /appointments
   def create
-    @appointment = Appointment.new(appointment_params)
+    @room = Room.find(appointment_params[:room].to_i)
+    @band = Band.find(appointment_params[:band].to_i)
+    mod_params = { **appointment_params, room: @room, band: @band }
+    puts mod_params
+    @appointment = Appointment.create(mod_params)
 
     if @appointment.save
       render json: @appointment, status: :created, location: @appointment
@@ -48,6 +57,6 @@ class AppointmentsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def appointment_params
-    params.require(:appointment).permit(:user_id, :room_id, :booking_start, :booking_end)
+    params.require(:appointment).permit(:band, :room, :booking_start, :booking_end)
   end
 end
