@@ -7,7 +7,7 @@ class AppointmentsController < ApplicationController
   # GET /appointments/filter/:iso8601
   def index
     @start = Date.parse(params[:iso8601])
-    @end = Date.new(@start.year, @start.month, (@start.day + 1))
+    @end = @start.next_day
 
     @appointments = Appointment.where('booking_hour_start BETWEEN ? AND ?', @start, @end)
 

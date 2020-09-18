@@ -12,10 +12,12 @@ export default function CheckAvail(props) {
     booking_hour_start: null,
     hours_booked: 0,
   })
+  const [appointments, setAppointments] = useState([])
 
   useEffect(() => {
     const fetchAppointments = async () => {
       const apptArray = await getAppointments(date.format())
+      setAppointments(apptArray)
     }
     fetchAppointments()
   }, [date])
