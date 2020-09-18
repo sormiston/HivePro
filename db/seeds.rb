@@ -46,7 +46,7 @@ p "#{User.count} users created!"
 
 def generate_day_of_appts(d)
   bands = Band.all[1..-1]
-  band.each do |band|
+  bands.each do |band|
     d = DateTime.new(d.year, d.month, d.day, rand(12..20))
     generate = Appointment.create!(
             room: Room.all[rand(Room.count)],
