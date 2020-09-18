@@ -1,4 +1,14 @@
-import appointmentData from './2020-09-18T00 00 00-04 00.json'
+const sample = require('./data.json')
+// Dev
+// const moment = require('moment')
+//
 
-const data = JSON.parse(appointmentData)
-console.log(appointmentData)
+export default function timeGnosticCheck(date, selectedBooking) {
+  const { booking_hour_start, hours_booked } = selectedBooking
+  
+  const dtStart = date.set({ 'hour': booking_hour_start, 'minute': 0, 'second': 0 })
+  const dtEnd = dtStart.clone().add(hours_booked, 'h')
+  console.log(dtStart.format())
+  console.log(dtEnd.format())
+  
+}
