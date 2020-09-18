@@ -1,10 +1,15 @@
+require 'date'
+
 class AppointmentsController < ApplicationController
   before_action :set_appointment, only: %i[show update destroy]
   before_action :authorize_request, except: :index
 
-  # GET /appointments
+  # GET /appointments/filter/:iso8601
   def index
-    @appointments = Appointment.all
+    @start = Date.parse(params[:iso8601])
+    @end = Date.new(@start.year, @start.month, (@start.day + 1))
+
+    @appointments = Appointment.where('booking_hour_start BETWEEN ? AND ?', @start, @end)
 
     render json: @appointments
   end

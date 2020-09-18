@@ -6,8 +6,8 @@ import { getAppointments } from '../../services/CRUD'
 import './calendarRootStyles.css'
 
 export default function CheckAvail(props) {
-  const { currentUser, currentDateTime } = props
-  const [dateWrap, setDateWrap] = useState(currentDateTime)
+  const { currentUser, currentDate } = props
+  const [date, setDate] = useState(currentDate)
   const [selectedBooking, setSelectedBooking] = useState({
     booking_hour_start: null,
     hours_booked: 0,
@@ -15,20 +15,18 @@ export default function CheckAvail(props) {
 
   useEffect(() => {
     const fetchAppointments = async () => {
-      const apptArray = await getAppointments(dateWrap.format())
+      const apptArray = await getAppointments(date.format())
     }
     fetchAppointments()
-
+  }, [date])
   
-    
-  }, [dateWrap])
-  const runCheck = async () => {}
-
+  const runCheck = async () => { }
+  
   return (
     <div>
       <h1>Check availability by date...</h1>
 
-      <Calendar value={dateWrap} setValue={setDateWrap} />
+      <Calendar value={date} setValue={setDate} />
       <button onClick={runCheck}>Check</button>
       <TimeFilter setSelectedBooking={setSelectedBooking} />
       <GnosticDisplay />
