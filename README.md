@@ -111,6 +111,7 @@ src
 
 |  Component   |    Type    | state | props | Description                                                      |
 | :----------: | :--------: | :---: | :---: | :--------------------------------------------------------------- |
+| MainContainer| functional |   y   |   y   |  State: rooms hash-array;                |
 |    Header    | functional |   n   |   n   | _The header will contain the navigation and logo._               |
 |  Navigation  | functional |   n   |   n   | _The navigation will provide a link to each of the pages._       |
 |   Gallery    |   class    |   y   |   n   | _The gallery will render the posts using cards in flexbox._      |
