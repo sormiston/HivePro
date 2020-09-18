@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Calendar from './Calendar/Calendar'
 import TimeFilter from './TimeFilter'
 import GnosticDisplay from '../Booker/TimeGnostic/display'
-import {getAppointments} from '../../services/CRUD'
+import { getAppointments } from '../../services/CRUD'
 import './calendarRootStyles.css'
 
 export default function CheckAvail(props) {
@@ -18,6 +18,9 @@ export default function CheckAvail(props) {
       const apptArray = await getAppointments(dateWrap.format())
     }
     fetchAppointments()
+
+  
+    
   }, [dateWrap])
   const runCheck = async () => {}
 

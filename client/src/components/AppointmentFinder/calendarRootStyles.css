@@ -14,20 +14,11 @@
   font-size: 16px;
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
-  font-smoothing: antialiased;
+
   -webkit-font-smoothing: antialiased;
 
 }
 
-@font-face {
-  font-family: "AirbnbCerealLight";
-  src: url(/fonts/AirbnbCerealLight.woff);
-}
-
-@font-face {
-  font-family: "AirbnbCerealBook";
-  src: url(/fonts/AirbnbCerealBook.woff);
-}
 
 @font-face {
   font-family: "AirbnbCerealMedium";
