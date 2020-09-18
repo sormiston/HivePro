@@ -53,7 +53,7 @@ def generate_day_of_appts(d)
       d = DateTime.new(d.year, d.month, d.day, rand(s...e))
       generate = Appointment.create!(
         room: room,
-        band: Band.all.last,
+        band: Band.all[rand(Band.count)],
         booking_hour_start: d,
         hours_booked: 2
       )
