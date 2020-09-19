@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Calendar from './Calendar/Calendar'
 import TimeFilter from './TimeFilter'
-import GnosticDisplay from '../Booker/TimeGnostic/display'
-import timeGnosticCheck from '../../services/availability'
+import GnosticDisplay from '../Booker/TimeGnostic/GnosticDisplay'
 import { getAppointments } from '../../services/CRUD'
 import './calendarRootStyles.css'
 
@@ -35,7 +34,7 @@ export default function CheckAvail(props) {
       <Calendar value={date} setValue={setDate} />
       <TimeFilter setSelectedBooking={setSelectedBooking} />
       <button onClick={fetchAppointments}>Check</button>
-      <GnosticDisplay />
+      <GnosticDisplay availableAppts={appointments} />
     </div>
   )
 }
