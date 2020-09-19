@@ -1,3 +1,5 @@
+// DEPRECATED !!
+
 const sample = require('./data.json')
 // Dev
 // const moment = require('moment')

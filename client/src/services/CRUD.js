@@ -9,10 +9,9 @@ export const getBandNames = async () => {
 
 // GET /appointments
 
-export const getAppointments = async (datestr) => {
-  
+export const getAppointments = async (dateHrStr,durStr) => {
   try {
-    const res = await api.get(`/appointments/filter/${datestr}`)
+    const res = await api.get(`/appointments/filter/${dateHrStr}/${durStr}`)
     return res.data
   } catch (err) {
     return err
