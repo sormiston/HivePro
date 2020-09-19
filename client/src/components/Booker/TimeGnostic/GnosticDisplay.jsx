@@ -1,13 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function GnosticDisplay(props) {
-  const { availableAppts } = props
+  const { roomsInventory, conflicts } = props
+  const [reducedInventory, setReducedInventory] = useState([])
+  
   
   return (
     <div>
-      {availableAppts.map(appt => (
-        <p>{appt.room.room_num}</p>
-      ))}
+      
     </div>
   )
 }

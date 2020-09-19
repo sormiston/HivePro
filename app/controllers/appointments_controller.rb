@@ -8,16 +8,17 @@ class AppointmentsController < ApplicationController
   def index
     @day = DateTime.parse(params[:dt][0..9])
     @next_day = @day.next_day
-
+    
     @start_time = DateTime.parse(params[:dt])
     @dur = params[:dur].to_i
     @end_time = DateTime.new(@start_time.year, @start_time.month, @start_time.day, (@start_time.hour + @dur))
 
     @appointments = Appointment
                     .where('booking_hour_start BETWEEN ? AND ?', @day, @next_day)
-                    .where('? <= booking_hour_start OR ? >= booking_hour_end', @start_time, @end_time)
+                    .where('? >= booking_hour_start AND ? < booking_hour_end', @start_time, @start_time)
+                    .or(Appointment.where('? >= booking_hour_start AND ? < booking_hour_end', @end_time, @end_time))
 
-    render json: @appointments, include: :room
+    render json: @appointments
   end
 
   # GET /appointments/1
