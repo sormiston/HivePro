@@ -24,15 +24,15 @@ export default function CheckAvail(props) {
   }, [date])
 
   const runCheck = () => {
-    console.log(typeof date.format(), date.format())
-    console.log(
-      typeof selectedBooking.booking_hour_start,
-      selectedBooking.booking_hour_start
-    )
-    console.log(
-      typeof selectedBooking.hours_booked,
-      selectedBooking.hours_booked
-    )
+    // console.log(typeof date.format(), date.format())
+    // console.log(
+    //   typeof selectedBooking.booking_hour_start,
+    //   selectedBooking.booking_hour_start
+    // )
+    // console.log(
+    //   typeof selectedBooking.hours_booked,
+    //   selectedBooking.hours_booked
+    // )
     selectedBooking.booking_hour_start !== null &&
       selectedBooking.hours_booked !== null &&
       timeGnosticCheck(date, selectedBooking)
