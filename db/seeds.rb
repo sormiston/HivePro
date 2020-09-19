@@ -48,32 +48,16 @@ def generate_day_of_appts(d)
   bands = Band.all[1..-1]
   bands.each do |band|
     d = DateTime.new(d.year, d.month, d.day, rand(12..20))
+    
     generate = Appointment.create!(
             room: Room.all[rand(Room.count)],
             band: band,
             booking_hour_start: d,
+            booking_hour_end: DateTime.new(d.year, d.month, d.day, (d.hour + 2)),
             hours_booked: 2
           )
           generate.save
   end
-  
-  # s = 12
-  # e = 18
-  # 2.times do
-  #   rooms = Room.all
-  #   rooms.each do |room|
-  #     d = DateTime.new(d.year, d.month, d.day, rand(s...e))
-  #     generate = Appointment.create!(
-  #       room: room,
-  #       band: Band.all[rand(Band.count)],
-  #       booking_hour_start: d,
-  #       hours_booked: 2
-  #     )
-  #     generate.save
-  #   end
-  #   s += 6
-  #   e += 6
-  # end
 end
 
 cdt = DateTime.now
