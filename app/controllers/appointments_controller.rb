@@ -11,30 +11,12 @@ class AppointmentsController < ApplicationController
 
     @start_time = DateTime.parse(params[:dt])
     @dur = params[:dur].to_i
+    @end_time = DateTime.new(@start_time.year, @start_time.month, @start_time.day, (@start_time.hour + @dur))
 
-    @appointments = Appointment.where('booking_hour_start BETWEEN ? AND ?', @day, @next_day)
-    .where('? <= booking_hour_start OR ? >= (')
-    
-   
-    
-      # booked_start_dt = DateTime.parse(appt.booking_hour_start.to_s)
-      # booked_end_dt = DateTime.new(
-      #   booked_start_dt.year,
-      #   booked_start_dt.month,
-      #   booked_start_dt.day,
-      #   (booked_start_dt.hour + appt.hours_booked)
-      # )
+    @appointments = Appointment
+                    .where('booking_hour_start BETWEEN ? AND ?', @day, @next_day)
+                    .where('? <= booking_hour_start OR ? >= booking_hour_end', @start_time, @end_time)
 
-      # user_start_dt = @day
-      # user_end_dt = DateTime.new(
-      #   user_start_dt.year,
-      #   user_start_dt.month,
-      #   user_start_dt.day,
-      #   (user_start_dt.hour + @dur)
-      # )
-
-    #   (user_end_dt <= booked_start_dt) || (user_start_dt >= booked_end_dt)
-    # end
     render json: @appointments, include: :room
   end
 
