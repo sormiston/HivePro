@@ -4,14 +4,38 @@ class AppointmentsController < ApplicationController
   before_action :set_appointment, only: %i[show update destroy]
   before_action :authorize_request, except: :index
 
-  # GET /appointments/filter/:iso8601
+  # GET /appointments/filter/:dt/:dur
   def index
-    @start = Date.parse(params[:iso8601])
-    @end = @start.next_day
+    @day = DateTime.parse(params[:dt][0..9])
+    @next_day = @day.next_day
 
-    @appointments = Appointment.where('booking_hour_start BETWEEN ? AND ?', @start, @end)
+    @start_time = DateTime.parse(params[:dt])
+    @dur = params[:dur].to_i
 
-    render json: @appointments
+    @appointments = Appointment.where('booking_hour_start BETWEEN ? AND ?', @day, @next_day)
+    .where('? <= booking_hour_start OR ? >= (')
+    
+   
+    
+      # booked_start_dt = DateTime.parse(appt.booking_hour_start.to_s)
+      # booked_end_dt = DateTime.new(
+      #   booked_start_dt.year,
+      #   booked_start_dt.month,
+      #   booked_start_dt.day,
+      #   (booked_start_dt.hour + appt.hours_booked)
+      # )
+
+      # user_start_dt = @day
+      # user_end_dt = DateTime.new(
+      #   user_start_dt.year,
+      #   user_start_dt.month,
+      #   user_start_dt.day,
+      #   (user_start_dt.hour + @dur)
+      # )
+
+    #   (user_end_dt <= booked_start_dt) || (user_start_dt >= booked_end_dt)
+    # end
+    render json: @appointments, include: :room
   end
 
   # GET /appointments/1
