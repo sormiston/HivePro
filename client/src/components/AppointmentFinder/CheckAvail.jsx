@@ -39,7 +39,7 @@ export default function CheckAvail(props) {
       <Calendar value={date} setValue={setDate} />
       <TimeFilter setSelectedBooking={setSelectedBooking} />
       <button onClick={runCheck}>Check</button>
-      {/* <GnosticDisplay roomsInventory={roomsInventory} availableAppts={conflicts} /> */}
+      <GnosticDisplay inventory={reducedInventory} />
     </div>
   )
 }
