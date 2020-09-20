@@ -1,26 +1,36 @@
 import React from 'react'
 
-export default function timeFilter(props) {
-  const { setSelectedBooking } = props
+export default function TimeFilter(props) {
+  const { selectedDateTime, updateState } = props
 
   const handleChange = (e) => {
     const { name, value } = e.target
-    setSelectedBooking((prevState) => ({
-      ...prevState,
-      [name]: Number(value),
-    }))
+    if (name === 'start') {
+      updateState(name, timeSlots[value])
+    } else {
+      updateState(name, Number(value))
+    }
+  }
+
+  const timeSlots = []
+  for (let i = 12; i < 22; i++) {
+    timeSlots.push(
+      selectedDateTime.clone().set('hour', i)
+    )
   }
 
   return (
     <>
-      {/* <h2>Search a specific time (optional)</h2> */}
-      {/* <h4>(all times EST)</h4> */}
       <div className='select-menu'>
         <label htmlFor='sessionStart'>Session Start</label>
-        <select name='booking_hour_start' onChange={handleChange}>
+        <select name='start' onChange={handleChange}>
           <option defaultValue>Session Start at...</option>
-          <option value='12'>12:00PM</option>
-          <option value='13'>1:00PM</option>
+          {timeSlots.map((slot, idx) => (
+            <option key={idx} value={idx}>{slot.format('hh:00A')}</option>
+          ))}
+          {/* slot.format('YYYY-MM-DDTHH:00:00') */}
+          
+          {/* <option value='13'>1:00PM</option>
           <option value='14'>2:00PM</option>
           <option value='15'>3:00PM</option>
           <option value='16'>4:00PM</option>
@@ -28,14 +38,18 @@ export default function timeFilter(props) {
           <option value='18'>6:00PM</option>
           <option value='19'>7:00PM</option>
           <option value='20'>8:00PM</option>
-          <option value='21'>9:00PM</option>
+          <option value='21'>9:00PM</option> */}
         </select>
       </div>
       <div className='duration-select'>
         <p>for...</p>
         <br />
         <label htmlFor='1'>duration</label>
-        <select defaultValue={'2'} name='hours_booked' onChange={handleChange}>
+        <select
+          defaultValue={'2'}
+          name='dur'
+          onChange={handleChange}
+        >
           <option value='1'>1 hour</option>
           <option value='2'>2 hours</option>
           <option value='3'>3 hours</option>

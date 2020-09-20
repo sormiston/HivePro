@@ -4,7 +4,7 @@ import React from 'react'
 // credit Mark Tellez - "devmentorlive"
 // https://www.youtube.com/watch?v=5jRrVqRWqsM
 
-export default function CalendarHeader({ value, setValue }) {
+export default function CalendarHeader({ value, updateState }) {
   function currMonthName() {
     return value.format('MMMM')
   }
@@ -28,14 +28,14 @@ export default function CalendarHeader({ value, setValue }) {
     <div className='header'>
       <div
         className='previous'
-        onClick={() => !thisMonth() && setValue(prevMonth())}
+        onClick={() => !thisMonth() && updateState('start', prevMonth())}
       >
         {!thisMonth() ? String.fromCharCode(171) : null}
       </div>
       <div className='current'>
         {currMonthName()} {currYear()}
       </div>
-      <div className='next' onClick={() => setValue(addMonth())}>
+      <div className='next' onClick={() => updateState('start', addMonth())}>
         {String.fromCharCode(187)}
       </div>
     </div>

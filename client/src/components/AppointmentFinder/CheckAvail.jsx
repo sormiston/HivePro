@@ -1,41 +1,54 @@
 import React, { useState, useEffect } from 'react'
 import Calendar from './Calendar/Calendar'
 import TimeFilter from './TimeFilter'
-import GnosticDisplay from '../Booker/TimeGnostic/display'
-import timeGnosticCheck from '../../services/availability'
-import { getAppointments } from '../../services/CRUD'
+import GnosticDisplay from '../Booker/TimeGnostic/GnosticDisplay'
+import { getConflicts } from '../../services/CRUD'
 import './calendarRootStyles.css'
 
 export default function CheckAvail(props) {
-  const { currentUser, currentDate } = props
+  const { currentUser, currentDate, roomsInventory } = props
   // dynamic date set by calendar component
-  const [date, setDate] = useState(currentDate)
-  // dynamic time params set by TimeFilter component
-  const [selectedBooking, setSelectedBooking] = useState({
-    booking_hour_start: null,
-    hours_booked: 2,
+  const [selectedDateTime, setSelectedDate] = useState({
+    start: currentDate,
+    dur: 2,
   })
-  // api return to be passed as props to display
-  const [appointments, setAppointments] = useState([])
-
-  const fetchAppointments = async () => {
-    const dateHrStr = date
-      .clone()
-      .set('hours', selectedBooking.booking_hour_start)
-      .format()
-    const durStr = String(selectedBooking.hours_booked)
-    const apptArray = await getAppointments(dateHrStr, durStr)
-    setAppointments(apptArray)
+  const updateState = (k, v) => {
+    setSelectedDate((prevState) => ({
+      ...prevState,
+      [k]: v,
+    }))
   }
 
+  const [reducedInventory, setReducedInventory] = useState([])
+
+  const runCheck = async () => {
+    
+    let conflicts = await getConflicts(
+      selectedDateTime.start.format('YYYY-MM-DDTHH:00:00'),
+      String(selectedDateTime.dur)
+    )
+    conflicts = conflicts.map((c) => c.room_id)
+    setReducedInventory(
+      roomsInventory.filter((r) => !conflicts.includes(r.id))
+    )
+  }
   return (
     <div>
       <h1>Check availability by date...</h1>
-
-      <Calendar value={date} setValue={setDate} />
-      <TimeFilter setSelectedBooking={setSelectedBooking} />
-      <button onClick={fetchAppointments}>Check</button>
-      <GnosticDisplay />
+      <Calendar
+        value={selectedDateTime.start}
+        updateState={updateState}
+      />
+      <TimeFilter
+        selectedDateTime={selectedDateTime.start}
+        updateState={updateState}
+      />
+      <button onClick={runCheck}>Check</button>
+      <GnosticDisplay
+        currentUser={currentUser}
+        selectedBooking={selectedDateTime}
+        inventory={reducedInventory}
+      />
     </div>
   )
 }

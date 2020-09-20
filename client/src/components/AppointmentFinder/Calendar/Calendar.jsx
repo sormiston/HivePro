@@ -11,14 +11,14 @@ import CalendarHeader from './Header'
 
 export default function Calendar(props) {
   const [calendar, setCalendar] = useState([])
-  const { value, setValue } = props
+  const { value, updateState } = props
   useEffect(() => {
     setCalendar(buildCalendar(value))
   }, [value])
 
   return (
     <div className='calendar'>
-      <CalendarHeader value={value} setValue={setValue} />
+      <CalendarHeader value={value} updateState={updateState} />
       <div className='body'>
         <div className='day-names'>
           {['s', 'm', 't', 'w', 't', 'f', 's'].map((d, i) => (
@@ -33,7 +33,7 @@ export default function Calendar(props) {
               <div
                 key={i}
                 className='day'
-                onClick={() => !beforeToday(day) && setValue(day)}
+                onClick={() => !beforeToday(day) && updateState('start', day)}
               >
                 <div className={dayStyles(day, value)}>
                   {day.format('D')}

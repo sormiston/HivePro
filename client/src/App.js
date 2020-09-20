@@ -1,61 +1,66 @@
-import React, { useState, useEffect } from "react";
-import { Switch, Route, useHistory } from "react-router-dom";
-import "./App.css";
-import Login from "./screens/Login";
-import Register from "./screens/Register";
-import MainContainer from "./containers/MainContainer";
+import React, { useState, useEffect } from 'react'
+import { Switch, Route, useHistory } from 'react-router-dom'
+import './App.css'
+import Login from './screens/Login'
+import Register from './screens/Register'
+import MainContainer from './containers/MainContainer'
 import {
   loginUser,
   registerUser,
   verifyUser,
   removeToken,
-} from "./services/auth";
+} from './services/auth'
+import moment from 'moment'
 
 function App() {
-  const [currentUser, setCurrentUser] = useState(null);
-  const history = useHistory();
+  const [currentUser, setCurrentUser] = useState(null)
+  const [currentDateTime, setCurrentDateTime] = useState(moment())
+  const history = useHistory()
 
   useEffect(() => {
     const handleVerify = async () => {
-      const userData = await verifyUser();
-      setCurrentUser(userData);
-    };
-    handleVerify();
-  }, []);
+      const userData = await verifyUser()
+      setCurrentUser(userData)
+    }
+    handleVerify()
+  }, [])
 
   const loginSubmit = async (loginData) => {
-    const userData = await loginUser(loginData);
-    setCurrentUser(userData);
-    history.push("/");
-  };
+    const userData = await loginUser(loginData)
+    setCurrentUser(userData)
+    history.push('/')
+  }
 
   const registerSubmit = async (registerData) => {
-    const userData = await registerUser(registerData);
-    setCurrentUser(userData);
-    history.push("/");
-  };
+    const userData = await registerUser(registerData)
+    setCurrentUser(userData)
+    history.push('/')
+  }
 
   const handleLogout = () => {
-    localStorage.removeItem("authToken");
-    removeToken();
-    setCurrentUser(null);
-    history.push("/");
-  };
+    localStorage.removeItem('authToken')
+    removeToken()
+    setCurrentUser(null)
+    history.push('/')
+  }
   return (
-    <div className="App">
+    <div className='App'>
       <Switch>
-        <Route path="/login">
+        <Route path='/login'>
           <Login loginSubmit={loginSubmit} />
         </Route>
-        <Route path="/register">
+        <Route path='/register'>
           <Register registerSubmit={registerSubmit} />
         </Route>
-        <Route path="/">
-          <MainContainer currentUser={currentUser} />
+        <Route path='/'>
+          <MainContainer
+            currentUser={currentUser}
+            currentDateTime={currentDateTime}
+          />
         </Route>
       </Switch>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
