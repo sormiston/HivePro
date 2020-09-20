@@ -1,7 +1,7 @@
 import api from './api-config'
 
 // GET /appointments/filter/:dt/:dur
-export const getConflicts = async (dateHrStr,durStr) => {
+export const getConflicts = async (dateHrStr, durStr) => {
   try {
     const res = await api.get(`/appointments/filter/${dateHrStr}/${durStr}`)
     return res.data
@@ -30,17 +30,12 @@ export const getRooms = async () => {
 }
 
 // POST / appointments
-// export const makeBooking = async (band, ) => {
-//   try {
-//     const res = await api.post('/appointments', {
-//       appointment: {
-//         band: band,
-//         room: 
-//       }
-//     })
-//     return res.data
-//   } catch (err) {
-//     return err
-//   }
-// }
+export const makeBooking = async (body) => {
+  try {
+    const res = await api.post('/appointments', body)
+    return res.data
+  } catch (err) {
+    return err
+  }
+}
 

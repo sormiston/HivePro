@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function TimeFilter(props) {
-  const { selectedDate, updateState } = props
+  const { selectedDateTime, updateState } = props
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -15,7 +15,7 @@ export default function TimeFilter(props) {
   const timeSlots = []
   for (let i = 12; i < 22; i++) {
     timeSlots.push(
-      selectedDate.clone().set('hour', i)
+      selectedDateTime.clone().set('hour', i)
     )
   }
 

@@ -8,43 +8,45 @@ import './calendarRootStyles.css'
 export default function CheckAvail(props) {
   const { currentUser, currentDate, roomsInventory } = props
   // dynamic date set by calendar component
-  const [selectedDate, setSelectedDate] = useState(
-    {
+  const [selectedDateTime, setSelectedDate] = useState({
     start: currentDate,
-    end: {},
-    dur: 2
-    }
-  )
+    dur: 2,
+  })
   const updateState = (k, v) => {
     setSelectedDate((prevState) => ({
       ...prevState,
-      [k]: v
+      [k]: v,
     }))
   }
-  
+
   const [reducedInventory, setReducedInventory] = useState([])
-  
+
   const runCheck = async () => {
-   
-    // const durStr = String(selectedBooking.hours_booked)
-    // const bookingHourEnd = selectedDate.clone().set('hour', )
-    // let conflicts = await getConflicts(selectedBooking.booking_hour_start, durStr)
-    // conflicts = conflicts.map((c) => c.room_id)
-    // setReducedInventory(
-    //   roomsInventory.filter((r) => !conflicts.includes(r.id))
-    // )
+    
+    let conflicts = await getConflicts(
+      selectedDateTime.start.format('YYYY-MM-DDTHH:00:00'),
+      String(selectedDateTime.dur)
+    )
+    conflicts = conflicts.map((c) => c.room_id)
+    setReducedInventory(
+      roomsInventory.filter((r) => !conflicts.includes(r.id))
+    )
   }
   return (
     <div>
       <h1>Check availability by date...</h1>
-
-      <Calendar value={selectedDate.start} updateState={updateState} />
-      <TimeFilter selectedDate={selectedDate.start} updateState={updateState} />
+      <Calendar
+        value={selectedDateTime.start}
+        updateState={updateState}
+      />
+      <TimeFilter
+        selectedDateTime={selectedDateTime.start}
+        updateState={updateState}
+      />
       <button onClick={runCheck}>Check</button>
       <GnosticDisplay
         currentUser={currentUser}
-        selectedDate={selectedDate.start}
-        updateState={updateState}
+        selectedBooking={selectedDateTime}
         inventory={reducedInventory}
       />
     </div>

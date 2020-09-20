@@ -5,22 +5,19 @@ class AppointmentsController < ApplicationController
   before_action :authorize_request, except: :index
 
   # GET /appointments/filter/:dt/:dur
-  #  Specifically gets appointments that conflict with user provided params 
-  
+  #  Specifically gets appointments that conflict with user provided params
   def index
-    # @day = DateTime.parse(params[:dt][0..9])
-    # @next_day = @day.next_day
-    
     @start_time = DateTime.parse(params[:dt])
-    puts "here is #{@start_time}"
     @dur = params[:dur].to_i
-    @end_time = DateTime.new(@start_time.year, @start_time.month, @start_time.day, (@start_time.hour + @dur))
 
+    # credit for Line 18 due to Daniel Beardsley at stack overflow:
+    # https://stackoverflow.com/questions/238684/subtract-n-hours-from-a-datetime-in-ruby
+    @end_time = (@start_time.to_time + @dur.hours).to_datetime
     @appointments = Appointment
                     .where('? >= booking_hour_start AND ? < booking_hour_end', @start_time, @start_time)
                     .or(Appointment.where('? >= booking_hour_start AND ? < booking_hour_end', @end_time, @end_time))
 
-    render json: @appointments 
+    render json: @appointments
   end
 
   # GET /appointments/1
@@ -32,9 +29,13 @@ class AppointmentsController < ApplicationController
   def create
     @room = Room.find(appointment_params[:room].to_i)
     @band = Band.find(appointment_params[:band].to_i)
-    mod_params = { **appointment_params, room: @room, band: @band }
-    puts mod_params
-    @appointment = Appointment.create(mod_params)
+    
+    @start_time = DateTime.parse(appointment_params[:booking_hour_start])
+    @end_time = (@start_time.to_time + appointment_params[:hours_booked].hours).to_datetime
+    
+    @mod_params = { **appointment_params, room: @room, band: @band, booking_hour_end: @end_time }
+    puts @mod_params
+    @appointment = Appointment.new(@mod_params)
 
     if @appointment.save
       render json: @appointment, status: :created, location: @appointment

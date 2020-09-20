@@ -1,18 +1,24 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { makeBooking } from '../../../services/CRUD'
 
 export default function GnosticDisplay(props) {
-  const { currentUser, selectedDate, selectedBooking, inventory } = props
-  
-  const postBooking = (roomId) => {
-    const bookingHash = {
-      // appointment: {
-      //   band: currentUser.band_id,
-      //   room: roomId,
-      //   booking_hour_start: selectedBooking.booking_hour_start
-       
-      // }
+  const { currentUser, selectedBooking, inventory } = props
+
+  const postBooking = async (roomId) => {
+    const body = {
+      appointment: {
+        band: currentUser.band_id,
+        room: Number(roomId),
+        booking_hour_start: selectedBooking.start
+          .clone()
+          .format('YYYY-MM-DDTHH:00:00'),
+        hours_booked: selectedBooking.dur,
+      },
     }
+    const post = await makeBooking(body)
+    console.log(post)
   }
+
   return (
     <div>
       {inventory.map((item) => (
@@ -25,7 +31,12 @@ export default function GnosticDisplay(props) {
             <summary>Equipment</summary>
             <p>{item.fixed_equipment}</p>
           </details>
-          <button value={item.id} onClick={(e) => postBooking(e.target.value)}>Book</button>
+          <button
+            value={item.id}
+            onClick={(e) => postBooking(e.target.value)}
+          >
+            Book
+          </button>
         </div>
       ))}
     </div>
