@@ -12,17 +12,16 @@ export default function CheckAvail(props) {
     start: currentDate,
     dur: 2,
   })
+  const [reducedInventory, setReducedInventory] = useState([])
+  const [touched, setTouched] = useState(false)
   const updateState = (k, v) => {
     setSelectedDate((prevState) => ({
       ...prevState,
       [k]: v,
     }))
   }
-
-  const [reducedInventory, setReducedInventory] = useState([])
-
+ 
   const runCheck = async () => {
-    
     let conflicts = await getConflicts(
       selectedDateTime.start.format('YYYY-MM-DDTHH:00:00'),
       String(selectedDateTime.dur)
@@ -31,6 +30,7 @@ export default function CheckAvail(props) {
     setReducedInventory(
       roomsInventory.filter((r) => !conflicts.includes(r.id))
     )
+    setTouched(true)
   }
   return (
     <div>
@@ -48,6 +48,7 @@ export default function CheckAvail(props) {
         currentUser={currentUser}
         selectedBooking={selectedDateTime}
         inventory={reducedInventory}
+        touched={touched}
       />
     </div>
   )

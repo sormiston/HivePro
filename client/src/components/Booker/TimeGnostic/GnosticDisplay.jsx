@@ -2,7 +2,8 @@ import React from 'react'
 import { makeBooking } from '../../../services/CRUD'
 
 export default function GnosticDisplay(props) {
-  const { currentUser, selectedBooking, inventory } = props
+  
+  const { currentUser, selectedBooking, inventory, touched } = props
 
   const postBooking = async (roomId) => {
     const body = {
@@ -21,6 +22,7 @@ export default function GnosticDisplay(props) {
 
   return (
     <div>
+      {touched && <div>{inventory.length} rooms available.</div>}
       {inventory.map((item) => (
         <div key={item.id}>
           <h4>Room: {item.room_num}</h4>
