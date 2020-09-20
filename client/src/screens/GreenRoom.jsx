@@ -1,7 +1,14 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 
 export default function GreenRoom(props) {
-  const {  } = props
+  const { currentUser } = props
+  
+  
+  // FETCH query of associated appointments 
+  useEffect(() => {
+    
+  })
+ 
   
   return (
     <div>

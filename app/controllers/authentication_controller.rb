@@ -19,7 +19,12 @@ class AuthenticationController < ApplicationController
 
   # GET /auth/verify
   def verify
-    render json: @current_user.attributes.except(:password_digest), status: :ok
+    @current_user = @current_user.attributes.except('password_digest')
+    @band = Band.find(@current_user['band_id'])
+  
+    @data = {**@current_user, band: @band}
+    
+    render json: @data, status: :ok
   end
 
   private
