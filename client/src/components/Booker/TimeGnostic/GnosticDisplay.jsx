@@ -5,12 +5,12 @@ export default function GnosticDisplay(props) {
   
   const postBooking = (roomId) => {
     const bookingHash = {
-      appointment: {
-        band: currentUser.band_id,
-        room: roomId,
-        booking_hour_start: selectedBooking.booking_hour_start
+      // appointment: {
+      //   band: currentUser.band_id,
+      //   room: roomId,
+      //   booking_hour_start: selectedBooking.booking_hour_start
        
-      }
+      // }
     }
   }
   return (

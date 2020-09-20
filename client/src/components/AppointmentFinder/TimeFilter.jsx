@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function TimeFilter(props) {
-  const { selectedDate, setSelectedBooking } = props
+  const { selectedDate, updateState } = props
 
   const handleChange = (e) => {
     const { name, value } = e.target
