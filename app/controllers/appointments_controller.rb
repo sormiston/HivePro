@@ -8,10 +8,11 @@ class AppointmentsController < ApplicationController
   #  Specifically gets appointments that conflict with user provided params 
   
   def index
-    @day = DateTime.parse(params[:dt][0..9])
-    @next_day = @day.next_day
+    # @day = DateTime.parse(params[:dt][0..9])
+    # @next_day = @day.next_day
     
     @start_time = DateTime.parse(params[:dt])
+    puts "here is #{@start_time}"
     @dur = params[:dur].to_i
     @end_time = DateTime.new(@start_time.year, @start_time.month, @start_time.day, (@start_time.hour + @dur))
 

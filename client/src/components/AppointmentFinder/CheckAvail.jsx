@@ -11,20 +11,21 @@ export default function CheckAvail(props) {
   const [selectedDate, setDate] = useState(currentDate)
   // dynamic time params set by TimeFilter component
   const [selectedBooking, setSelectedBooking] = useState({
-    booking_hour_start: '',
+    booking_hour_start: {},
     hours_booked: 2,
   })
   const [reducedInventory, setReducedInventory] = useState([])
-
+  
   const runCheck = async () => {
     // currently NO guard against running with null booking time - error
-    const dateHrStr = selectedDate
-      .clone()
-      .set('hours', selectedBooking.booking_hour_start)
-      .format('YYYY-MM-DDTHH:00:00')
+    // const dateHrStr = selectedDate
+    //   .clone()
+    //   .set('hours', selectedBooking.booking_hour_start)
+    //   .format('YYYY-MM-DDTHH:00:00')
     const durStr = String(selectedBooking.hours_booked)
 
-    let conflicts = await getConflicts(dateHrStr, durStr)
+    const bookingHourEnd = selectedDate.clone().set('hour', )
+    let conflicts = await getConflicts(selectedBooking.booking_hour_start, durStr)
     conflicts = conflicts.map((c) => c.room_id)
     setReducedInventory(
       roomsInventory.filter((r) => !conflicts.includes(r.id))
