@@ -5,10 +5,11 @@ export default function TimeFilter(props) {
 
   const handleChange = (e) => {
     const { name, value } = e.target
-    setSelectedBooking((prevState) => ({
-      ...prevState,
-      [name]: timeSlots[value],
-    }))
+    if (name === 'start') {
+      updateState(name, timeSlots[value])
+    } else {
+      updateState(name, Number(value))
+    }
   }
 
   const timeSlots = []
@@ -22,7 +23,7 @@ export default function TimeFilter(props) {
     <>
       <div className='select-menu'>
         <label htmlFor='sessionStart'>Session Start</label>
-        <select name='booking_hour_start' onChange={handleChange}>
+        <select name='start' onChange={handleChange}>
           <option defaultValue>Session Start at...</option>
           {timeSlots.map((slot, idx) => (
             <option key={idx} value={idx}>{slot.format('hh:00A')}</option>
@@ -46,7 +47,7 @@ export default function TimeFilter(props) {
         <label htmlFor='1'>duration</label>
         <select
           defaultValue={'2'}
-          name='hours_booked'
+          name='dur'
           onChange={handleChange}
         >
           <option value='1'>1 hour</option>

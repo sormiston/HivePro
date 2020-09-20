@@ -12,7 +12,7 @@ export default function CheckAvail(props) {
     {
     start: currentDate,
     end: {},
-    dur: 0
+    dur: 2
     }
   )
   const updateState = (k, v) => {
@@ -44,7 +44,7 @@ export default function CheckAvail(props) {
       <GnosticDisplay
         currentUser={currentUser}
         selectedDate={selectedDate.start}
-        // selectedBooking={selectedBooking}
+        updateState={updateState}
         inventory={reducedInventory}
       />
     </div>
