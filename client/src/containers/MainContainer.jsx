@@ -16,10 +16,12 @@ export default function MainContainer(props) {
   }, [])
 
   return (
-    <MainScreen
-      currentUser={currentUser}
-      currentDateTime={currentDateTime}
-      roomsInventory={roomsInventory}
-    />
+    
+        <MainScreen
+          currentUser={currentUser}
+          currentDateTime={currentDateTime}
+          roomsInventory={roomsInventory}
+        />
+     
   )
 }

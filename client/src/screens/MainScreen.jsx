@@ -7,6 +7,7 @@ export default function MainScreen(props) {
     .clone()
     .set({ hour: 0, minute: 0, second: 0 })
   return (
+    
     <div>
       <CheckAvail
         currentUser={currentUser}

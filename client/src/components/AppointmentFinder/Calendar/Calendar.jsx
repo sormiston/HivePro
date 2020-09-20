@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-
+import './calendarRootStyles.css'
 import './styles.css'
 import buildCalendar from './build'
 import dayStyles, { beforeToday } from './styles'

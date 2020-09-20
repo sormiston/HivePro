@@ -3,7 +3,7 @@ import Calendar from './Calendar/Calendar'
 import TimeFilter from './TimeFilter'
 import GnosticDisplay from '../Booker/TimeGnostic/GnosticDisplay'
 import { getConflicts } from '../../services/CRUD'
-import './calendarRootStyles.css'
+
 
 export default function CheckAvail(props) {
   const { currentUser, currentDate, roomsInventory } = props
