@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import {
   Switch,
-  Route,
-  useHistory,
-  useParams,
+  Route
 } from 'react-router-dom'
 import MainScreen from '../screens/MainScreen'
 import GreenRoom from '../screens/GreenRoom'

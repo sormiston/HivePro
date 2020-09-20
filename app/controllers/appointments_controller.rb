@@ -10,7 +10,7 @@ class AppointmentsController < ApplicationController
     @start_time = DateTime.parse(params[:dt])
     @dur = params[:dur].to_i
 
-    # credit for Line 18 due to Daniel Beardsley at stack overflow:
+    # credit for Line 15 due to Daniel Beardsley:
     # https://stackoverflow.com/questions/238684/subtract-n-hours-from-a-datetime-in-ruby
     @end_time = (@start_time.to_time + @dur.hours).to_datetime
     @appointments = Appointment
@@ -31,7 +31,7 @@ class AppointmentsController < ApplicationController
     @band = Band.find(appointment_params[:band].to_i)
     
     @start_time = DateTime.parse(appointment_params[:booking_hour_start])
-    @end_time = (@start_time.to_time + appointment_params[:hours_booked].hours).to_datetime
+    @end_time = (@start_time.to_time + appointment_params[:hours_booked].to_i.hours).to_datetime
     
     @mod_params = { **appointment_params, room: @room, band: @band, booking_hour_end: @end_time }
     puts @mod_params
@@ -46,7 +46,15 @@ class AppointmentsController < ApplicationController
 
   # PATCH/PUT /appointments/1
   def update
-    if @appointment.update(appointment_params)
+    @appointment = Appointment.find(params[:id])
+    @room = Room.find(appointment_params[:room].to_i)
+    @start_time = DateTime.parse(appointment_params[:booking_hour_start])
+    @end_time = (@start_time.to_time + appointment_params[:hours_booked].to_i.hours).to_datetime
+    
+    @mod_params = { **appointment_params, room: @room, booking_hour_end: @end_time }
+    puts @mod_params 
+    
+    if @appointment.update(@mod_params)
       render json: @appointment
     else
       render json: @appointment.errors, status: :unprocessable_entity
@@ -67,6 +75,6 @@ class AppointmentsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def appointment_params
-    params.require(:appointment).permit(:band, :room, :booking_hour_start, :booking_hour_end, :hours_booked)
+    params.require(:appointment).permit(:band, :room, :booking_hour_start, :booking_hour_end, :hours_booked, :id)
   end
 end

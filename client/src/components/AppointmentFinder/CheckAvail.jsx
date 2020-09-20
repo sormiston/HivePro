@@ -6,7 +6,7 @@ import { getConflicts } from '../../services/CRUD'
 
 
 export default function CheckAvail(props) {
-  const { currentUser, currentDate, roomsInventory } = props
+  const { currentUser, currentDate, roomsInventory, updateId } = props
   // dynamic date set by calendar component
   const [selectedDateTime, setSelectedDate] = useState({
     start: currentDate,
@@ -44,12 +44,14 @@ export default function CheckAvail(props) {
         updateState={updateState}
       />
       <button onClick={runCheck}>Check</button>
-      <GnosticDisplay
+      {touched && <GnosticDisplay
         currentUser={currentUser}
         selectedBooking={selectedDateTime}
         inventory={reducedInventory}
         touched={touched}
-      />
+        setTouched={setTouched}
+        updateId={updateId}
+      />}
     </div>
   )
 }

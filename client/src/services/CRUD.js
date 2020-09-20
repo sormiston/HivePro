@@ -29,11 +29,20 @@ export const getRooms = async () => {
   }
 }
 
-// POST / appointments
-export const makeBooking = async (body) => {
+// POST /appointments
+export const postBooking = async (body) => {
   try {
     const res = await api.post('/appointments', body)
     return res.data
+  } catch (err) {
+    return err
+  }
+}
+
+// PATCH /appointments/:id
+export const patchBooking = async (id, body) => {
+  try {
+    const res = await api.patch(`/appointments/${id}`, body)
   } catch (err) {
     return err
   }
