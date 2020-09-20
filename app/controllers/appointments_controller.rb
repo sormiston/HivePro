@@ -5,6 +5,8 @@ class AppointmentsController < ApplicationController
   before_action :authorize_request, except: :index
 
   # GET /appointments/filter/:dt/:dur
+  #  Specifically gets appointments that conflict with user provided params 
+  
   def index
     @day = DateTime.parse(params[:dt][0..9])
     @next_day = @day.next_day
@@ -14,11 +16,10 @@ class AppointmentsController < ApplicationController
     @end_time = DateTime.new(@start_time.year, @start_time.month, @start_time.day, (@start_time.hour + @dur))
 
     @appointments = Appointment
-                    .where('booking_hour_start BETWEEN ? AND ?', @day, @next_day)
                     .where('? >= booking_hour_start AND ? < booking_hour_end', @start_time, @start_time)
                     .or(Appointment.where('? >= booking_hour_start AND ? < booking_hour_end', @end_time, @end_time))
 
-    render json: @appointments
+    render json: @appointments 
   end
 
   # GET /appointments/1
@@ -64,6 +65,6 @@ class AppointmentsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def appointment_params
-    params.require(:appointment).permit(:band, :room, :booking_start, :booking_end)
+    params.require(:appointment).permit(:band, :room, :booking_hour_start, :booking_hour_end, :hours_booked)
   end
 end

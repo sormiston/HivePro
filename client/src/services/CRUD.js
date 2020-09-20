@@ -1,7 +1,6 @@
 import api from './api-config'
 
 // GET /appointments/filter/:dt/:dur
-
 export const getConflicts = async (dateHrStr,durStr) => {
   try {
     const res = await api.get(`/appointments/filter/${dateHrStr}/${durStr}`)
@@ -11,7 +10,6 @@ export const getConflicts = async (dateHrStr,durStr) => {
   }
 }
 // GET /bands
-
 export const getBandNames = async () => {
   try {
     const res = await api.get('/bands/names')
@@ -22,7 +20,6 @@ export const getBandNames = async () => {
 }
 
 // GET /rooms
-
 export const getRooms = async () => {
   try {
     const res = await api.get('/rooms')
@@ -31,3 +28,19 @@ export const getRooms = async () => {
     return err
   }
 }
+
+// POST / appointments
+// export const makeBooking = async (band, ) => {
+//   try {
+//     const res = await api.post('/appointments', {
+//       appointment: {
+//         band: band,
+//         room: 
+//       }
+//     })
+//     return res.data
+//   } catch (err) {
+//     return err
+//   }
+// }
+

@@ -1,13 +1,13 @@
 import React from 'react'
 
-export default function timeFilter(props) {
-  const { setSelectedBooking } = props
+export default function TimeFilter(props) {
+  const { selectedDate, setSelectedBooking } = props
 
   const handleChange = (e) => {
     const { name, value } = e.target
     setSelectedBooking((prevState) => ({
       ...prevState,
-      [name]: Number(value),
+      [name]: value,
     }))
   }
 
@@ -19,7 +19,7 @@ export default function timeFilter(props) {
         <label htmlFor='sessionStart'>Session Start</label>
         <select name='booking_hour_start' onChange={handleChange}>
           <option defaultValue>Session Start at...</option>
-          <option value='12'>12:00PM</option>
+          <option value={selectedDate.set('hour', 12).format('YYYY-MM-DDTHH:00:00')}>12:00PM</option>
           <option value='13'>1:00PM</option>
           <option value='14'>2:00PM</option>
           <option value='15'>3:00PM</option>
