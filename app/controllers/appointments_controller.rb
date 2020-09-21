@@ -24,7 +24,7 @@ class AppointmentsController < ApplicationController
   
   def index_belonging_to_band
     @appointments = Appointment.where(band: params[:band_id])
-    render json: @appointments
+    render json: @appointments, include: :room
   end
   
   # 🦄 "AUTOMAGICAL" 🦄
