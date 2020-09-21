@@ -4,14 +4,14 @@
   box-sizing: border-box;
   font-size: 1rem;
   max-width: 400px;
-  margin: 0 auto;
+  margin: .75rem;
 }
 
 .calendar .header {
   background-color: var(--light-blue);
   text-align: center;
-  min-height: 2rem;
-  line-height: 2rem;
+  min-height: 3rem;
+  line-height: 3rem;
   color: var(--black);
   font-family: var(--font-book);
   font-weight: 700;

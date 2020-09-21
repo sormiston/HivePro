@@ -30,7 +30,7 @@ export default function CalendarHeader({ value, updateState }) {
         className='previous'
         onClick={() => !thisMonth() && updateState('start', prevMonth())}
       >
-        {!thisMonth() ? String.fromCharCode(171) : null}
+       <span>{!thisMonth() ? String.fromCharCode(171) : null}</span> 
       </div>
       <div className='current'>
         {currMonthName()} {currYear()}

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Switch, Route, useHistory } from 'react-router-dom'
-import './App.css'
 import Login from './screens/Login'
 import Register from './screens/Register'
 import MainContainer from './containers/MainContainer'
+import Layout from './layouts/Layout'
 import {
   loginUser,
   registerUser,
@@ -11,10 +11,14 @@ import {
   removeToken,
 } from './services/auth'
 import moment from 'moment'
+import "./mystyles.scss"
+
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null)
   const [currentDateTime, setCurrentDateTime] = useState(moment())
+  const [showCurtainMenu, setShowCurtainMenu] = useState(false)
+  const [width, setWidth] = useState(window.innerWidth)
   const history = useHistory()
 
   useEffect(() => {
@@ -44,8 +48,14 @@ function App() {
     history.push('/')
   }
   return (
-    <div className='App'>
-      <Switch>
+    
+    <Switch>
+      
+      <Layout
+        currentUser={currentUser}
+        showCurtainMenu={showCurtainMenu}
+        setShowCurtainMenu={setShowCurtainMenu}
+      >
         <Route path='/login'>
           <Login loginSubmit={loginSubmit} />
         </Route>
@@ -53,13 +63,14 @@ function App() {
           <Register registerSubmit={registerSubmit} />
         </Route>
         <Route path='/'>
+          
           <MainContainer
             currentUser={currentUser}
             currentDateTime={currentDateTime}
           />
         </Route>
-      </Switch>
-    </div>
+      </Layout>
+    </Switch>
   )
 }
 

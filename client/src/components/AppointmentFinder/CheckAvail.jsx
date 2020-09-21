@@ -3,15 +3,17 @@ import Calendar from './Calendar/Calendar'
 import TimeFilter from './TimeFilter'
 import GnosticDisplay from '../Booker/TimeGnostic/GnosticDisplay'
 import { getConflicts } from '../../services/CRUD'
-import './calendarRootStyles.css'
+import { Container, Box, Title } from 'rbx'
 
 export default function CheckAvail(props) {
-  const { currentUser, currentDate, roomsInventory } = props
+  const { currentUser, currentDate, roomsInventory, updateId } = props
   // dynamic date set by calendar component
   const [selectedDateTime, setSelectedDate] = useState({
     start: currentDate,
     dur: 2,
   })
+  const [reducedInventory, setReducedInventory] = useState([])
+  const [touched, setTouched] = useState(false)
   const updateState = (k, v) => {
     setSelectedDate((prevState) => ({
       ...prevState,
@@ -19,10 +21,7 @@ export default function CheckAvail(props) {
     }))
   }
 
-  const [reducedInventory, setReducedInventory] = useState([])
-
   const runCheck = async () => {
-    
     let conflicts = await getConflicts(
       selectedDateTime.start.format('YYYY-MM-DDTHH:00:00'),
       String(selectedDateTime.dur)
@@ -31,24 +30,37 @@ export default function CheckAvail(props) {
     setReducedInventory(
       roomsInventory.filter((r) => !conflicts.includes(r.id))
     )
+    setTouched(true)
   }
   return (
-    <div>
-      <h1>Check availability by date...</h1>
+    <Container>
+      <Box>
+      <Title subtitle>Check availability by date...</Title>
       <Calendar
         value={selectedDateTime.start}
         updateState={updateState}
       />
-      <TimeFilter
-        selectedDateTime={selectedDateTime.start}
-        updateState={updateState}
-      />
+      	<TimeFilter
+      	  selectedDateTime={selectedDateTime.start}
+      	  updateState={updateState}
+        />
+        
+      </Box>
       <button onClick={runCheck}>Check</button>
-      <GnosticDisplay
-        currentUser={currentUser}
-        selectedBooking={selectedDateTime}
-        inventory={reducedInventory}
-      />
-    </div>
+       
+      
+      {touched && (
+        <Box>
+          <GnosticDisplay
+            currentUser={currentUser}
+            selectedBooking={selectedDateTime}
+            inventory={reducedInventory}
+            touched={touched}
+            setTouched={setTouched}
+            updateId={updateId}
+          />
+        </Box>
+      )}
+    </Container>
   )
 }

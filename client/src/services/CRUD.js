@@ -1,5 +1,15 @@
 import api from './api-config'
 
+// GET /appointments/band/:band_id
+export const getAppointmentsByBand = async (band_id) => {
+  try {
+    const res = await api.get(`/appointments/band/${band_id}`)
+    return res.data
+  } catch (err) {
+    return err
+  }
+}
+
 // GET /appointments/filter/:dt/:dur
 export const getConflicts = async (dateHrStr, durStr) => {
   try {
@@ -29,11 +39,29 @@ export const getRooms = async () => {
   }
 }
 
-// POST / appointments
-export const makeBooking = async (body) => {
+// POST /appointments
+export const postBooking = async (body) => {
   try {
     const res = await api.post('/appointments', body)
     return res.data
+  } catch (err) {
+    return err
+  }
+}
+
+// PATCH /appointments/:id
+export const patchBooking = async (id, body) => {
+  try {
+    const res = await api.patch(`/appointments/${id}`, body)
+  } catch (err) {
+    return err
+  }
+}
+
+// DELETE /appointments/:id
+export const deleteBooking = async (id) => {
+  try {
+    const res = await api.delete(`/appointments/${id}`)
   } catch (err) {
     return err
   }
