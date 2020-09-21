@@ -1,4 +1,5 @@
 import React from 'react'
+import { Select } from 'rbx'
 
 export default function TimeFilter(props) {
   const { selectedDateTime, updateState } = props
@@ -21,26 +22,23 @@ export default function TimeFilter(props) {
 
   return (
     <>
-      <div className='select-menu'>
-        <label htmlFor='sessionStart'>Session Start</label>
-        <select name='start' onChange={handleChange}>
-          <option defaultValue>Session Start at...</option>
+      <Select.Container>
+        <Select name='start-time' onChange={handleChange}>
+        <Select.Option>--:-- PM</Select.Option>
+      
           {timeSlots.map((slot, idx) => (
-            <option key={idx} value={idx}>{slot.format('hh:00A')}</option>
+            <Select.Option key={idx} value={idx}>{slot.format('hh:00A')}</Select.Option>
           ))}
-          {/* slot.format('YYYY-MM-DDTHH:00:00') */}
-          
-          {/* <option value='13'>1:00PM</option>
-          <option value='14'>2:00PM</option>
-          <option value='15'>3:00PM</option>
-          <option value='16'>4:00PM</option>
-          <option value='17'>5:00PM</option>
-          <option value='18'>6:00PM</option>
-          <option value='19'>7:00PM</option>
-          <option value='20'>8:00PM</option>
-          <option value='21'>9:00PM</option> */}
-        </select>
-      </div>
+          </Select>
+        
+      </Select.Container>
+      
+      
+      
+      
+      
+      
+      
       <div className='duration-select'>
         <p>for...</p>
         <br />

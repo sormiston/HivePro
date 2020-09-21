@@ -8,9 +8,38 @@ $react: #00d8ff !default;
 $react-invert: findColorInvert($react) !default;
 $custom-colors: ("react": ($react, $react-invert));
 
+
 // Import Bulma styles
 @import "~bulma/bulma";
 
 // Import rbx style fixes (**very simple**)
 @import "~rbx/rbx";
 
+body {
+  min-height: 200vh;
+}
+ div.container {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.gallery h2 {
+  color: $warning;
+}
+
+div.notification h4 {
+  text-align: left;
+}
+
+.calendar .header {
+  background-color: $warning;
+  
+  div.next, div.previous {
+    
+    font-size: 3rem;
+    font-weight: 400;
+    padding-right: .5rem;
+    
+  }
+}

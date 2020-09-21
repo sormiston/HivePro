@@ -3,7 +3,7 @@ import Calendar from './Calendar/Calendar'
 import TimeFilter from './TimeFilter'
 import GnosticDisplay from '../Booker/TimeGnostic/GnosticDisplay'
 import { getConflicts } from '../../services/CRUD'
-
+import { Container, Box, Title } from 'rbx'
 
 export default function CheckAvail(props) {
   const { currentUser, currentDate, roomsInventory, updateId } = props
@@ -20,7 +20,7 @@ export default function CheckAvail(props) {
       [k]: v,
     }))
   }
- 
+
   const runCheck = async () => {
     let conflicts = await getConflicts(
       selectedDateTime.start.format('YYYY-MM-DDTHH:00:00'),
@@ -33,25 +33,34 @@ export default function CheckAvail(props) {
     setTouched(true)
   }
   return (
-    <div>
-      <h1>Check availability by date...</h1>
+    <Container>
+      <Box>
+      <Title subtitle>Check availability by date...</Title>
       <Calendar
         value={selectedDateTime.start}
         updateState={updateState}
       />
-      <TimeFilter
-        selectedDateTime={selectedDateTime.start}
-        updateState={updateState}
-      />
-      <button onClick={runCheck}>Check</button>
-      {touched && <GnosticDisplay
-        currentUser={currentUser}
-        selectedBooking={selectedDateTime}
-        inventory={reducedInventory}
-        touched={touched}
-        setTouched={setTouched}
-        updateId={updateId}
-      />}
-    </div>
+      	<TimeFilter
+      	  selectedDateTime={selectedDateTime.start}
+      	  updateState={updateState}
+        />
+         <button onClick={runCheck}>Check</button>
+      </Box>
+      
+       
+      
+      {touched && (
+        <Box>
+          <GnosticDisplay
+            currentUser={currentUser}
+            selectedBooking={selectedDateTime}
+            inventory={reducedInventory}
+            touched={touched}
+            setTouched={setTouched}
+            updateId={updateId}
+          />
+        </Box>
+      )}
+    </Container>
   )
 }
