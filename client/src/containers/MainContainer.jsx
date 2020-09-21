@@ -7,6 +7,7 @@ import MainScreen from '../screens/MainScreen'
 import GreenRoom from '../screens/GreenRoom'
 import { getRooms } from '../services/CRUD'
 
+
 export default function MainContainer(props) {
   const [roomsInventory, setRoomsInventory] = useState(null)
   
@@ -23,6 +24,7 @@ export default function MainContainer(props) {
   return (
     <>
       <Switch>
+      
         <Route exact path='/'>
           <MainScreen
             currentUser={currentUser}
