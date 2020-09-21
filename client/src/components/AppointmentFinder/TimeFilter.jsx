@@ -1,15 +1,15 @@
 import React from 'react'
-import { Select } from 'rbx'
+import { Generic, Select } from 'rbx'
 
 export default function TimeFilter(props) {
   const { selectedDateTime, updateState } = props
 
   const handleChange = (e) => {
-    const { name, value } = e.target
-    if (name === 'start') {
-      updateState(name, timeSlots[value])
+    const { className, value } = e.target
+    if (className === 'start') {
+      updateState(className, timeSlots[value])
     } else {
-      updateState(name, Number(value))
+      updateState(className, Number(value))
     }
   }
 
@@ -21,38 +21,29 @@ export default function TimeFilter(props) {
   }
 
   return (
-    <>
-      <Select.Container>
-        <Select name='start-time' onChange={handleChange}>
-        <Select.Option>--:-- PM</Select.Option>
+    <Generic className="time-options" as={"span"}>
+      <Select.Container className='time-start'>
+        <Select className='start' onChange={handleChange}>
+        <Select.Option className='start'>--:-- PM</Select.Option>
       
           {timeSlots.map((slot, idx) => (
-            <Select.Option key={idx} value={idx}>{slot.format('hh:00A')}</Select.Option>
+            <Select.Option className='start' key={idx} value={idx}>{slot.format('hh:00A')}</Select.Option>
           ))}
           </Select>
         
       </Select.Container>
-      
-      
-      
-      
-      
-      
-      
-      <div className='duration-select'>
-        <p>for...</p>
-        <br />
-        <label htmlFor='1'>duration</label>
-        <select
+      <span>for...</span>
+      <Select.Container className='time-dur'>
+        <Select
           defaultValue={'2'}
           name='dur'
           onChange={handleChange}
         >
-          <option value='1'>1 hour</option>
-          <option value='2'>2 hours</option>
-          <option value='3'>3 hours</option>
-        </select>
-      </div>
-    </>
+          <Select.Option value='1'>1 hour</Select.Option>
+          <Select.Option value='2'>2 hours</Select.Option>
+          <Select.Option value='3'>3 hours</Select.Option>
+        </Select>
+      </Select.Container>
+    </Generic>
   )
 }

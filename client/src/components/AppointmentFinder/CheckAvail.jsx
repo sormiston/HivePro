@@ -44,9 +44,9 @@ export default function CheckAvail(props) {
       	  selectedDateTime={selectedDateTime.start}
       	  updateState={updateState}
         />
-         <button onClick={runCheck}>Check</button>
+        
       </Box>
-      
+      <button onClick={runCheck}>Check</button>
        
       
       {touched && (

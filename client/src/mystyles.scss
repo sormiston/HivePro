@@ -43,3 +43,8 @@ div.notification h4 {
     
   }
 }
+span.time-options {
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+}
