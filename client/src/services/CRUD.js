@@ -1,5 +1,15 @@
 import api from './api-config'
 
+// GET /appointments/band/:band_id
+export const getAppointmentsByBand = async (band_id) => {
+  try {
+    const res = await api.get(`/appointments/band/${band_id}`)
+    return res.data
+  } catch (err) {
+    return err
+  }
+}
+
 // GET /appointments/filter/:dt/:dur
 export const getConflicts = async (dateHrStr, durStr) => {
   try {

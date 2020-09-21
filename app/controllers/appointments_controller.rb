@@ -20,6 +20,14 @@ class AppointmentsController < ApplicationController
     render json: @appointments
   end
 
+  # GET /appointments/band/:band_id
+  
+  def index_belonging_to_band
+    @appointments = Appointment.where(band: params[:band_id])
+    render json: @appointments
+  end
+  
+  # 🦄 "AUTOMAGICAL" 🦄
   # GET /appointments/1
   def show
     render json: @appointment
