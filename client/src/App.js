@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Switch, Route, useHistory } from 'react-router-dom'
-import './App.css'
 import Login from './screens/Login'
 import Register from './screens/Register'
 import MainContainer from './containers/MainContainer'
+import Layout from './layouts/Layout'
 import {
   loginUser,
   registerUser,
@@ -44,8 +44,9 @@ function App() {
     history.push('/')
   }
   return (
-    <div className='App'>
-      <Switch>
+   
+    <Switch>
+       <Layout>
         <Route path='/login'>
           <Login loginSubmit={loginSubmit} />
         </Route>
@@ -58,8 +59,9 @@ function App() {
             currentDateTime={currentDateTime}
           />
         </Route>
+        </Layout>
       </Switch>
-    </div>
+    
   )
 }
 
