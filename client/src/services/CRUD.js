@@ -58,3 +58,12 @@ export const patchBooking = async (id, body) => {
   }
 }
 
+// DELETE /appointments/:id
+export const deleteBooking = async (id) => {
+  try {
+    const res = await api.delete(`/appointments/${id}`)
+  } catch (err) {
+    return err
+  }
+}
+

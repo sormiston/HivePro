@@ -46,7 +46,7 @@ export default function GnosticDisplay(props) {
           <h4>Room: {item.room_num}</h4>
           <p>Sq. Footage: {item.sq_footage}</p>
           <p>Max Capacity: {item.max_cap}</p>
-          <p>Hourly Rate: {item.hourly_rt}</p>
+          <p>Hourly Rate: ${item.hourly_rt_day}/hr (Days), ${item.hourly_rt_night}/hr (Evenings)</p>
           <details>
             <summary>Equipment</summary>
             <p>{item.fixed_equipment}</p>

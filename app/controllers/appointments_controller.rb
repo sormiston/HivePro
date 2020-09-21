@@ -21,12 +21,12 @@ class AppointmentsController < ApplicationController
   end
 
   # GET /appointments/band/:band_id
-  
+
   def index_belonging_to_band
     @appointments = Appointment.where(band: params[:band_id])
     render json: @appointments, include: :room
   end
-  
+
   # 🦄 "AUTOMAGICAL" 🦄
   # GET /appointments/1
   def show
@@ -37,12 +37,9 @@ class AppointmentsController < ApplicationController
   def create
     @room = Room.find(appointment_params[:room].to_i)
     @band = Band.find(appointment_params[:band].to_i)
-    
     @start_time = DateTime.parse(appointment_params[:booking_hour_start])
     @end_time = (@start_time.to_time + appointment_params[:hours_booked].to_i.hours).to_datetime
-    
     @mod_params = { **appointment_params, room: @room, band: @band, booking_hour_end: @end_time }
-    puts @mod_params
     @appointment = Appointment.new(@mod_params)
 
     if @appointment.save
@@ -58,10 +55,10 @@ class AppointmentsController < ApplicationController
     @room = Room.find(appointment_params[:room].to_i)
     @start_time = DateTime.parse(appointment_params[:booking_hour_start])
     @end_time = (@start_time.to_time + appointment_params[:hours_booked].to_i.hours).to_datetime
-    
+
     @mod_params = { **appointment_params, room: @room, booking_hour_end: @end_time }
-    puts @mod_params 
-    
+    puts @mod_params
+
     if @appointment.update(@mod_params)
       render json: @appointment
     else

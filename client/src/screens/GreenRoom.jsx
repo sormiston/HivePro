@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
-import { getAppointmentsByBand } from '../services/CRUD'
+import { getAppointmentsByBand, deleteBooking } from '../services/CRUD'
 import moment from 'moment'
 
 export default function GreenRoom(props) {
   const [appointments, setAppointments] = useState([])
+  const [pageModified, setPageModified] = useState(0)
   const { currentUser } = props
   const history = useHistory()
 
@@ -33,10 +34,14 @@ export default function GreenRoom(props) {
       setAppointments(apptArray)
     }
     currentUser && fetchAppointments()
-  }, [currentUser])
+  }, [currentUser, pageModified])
 
-  const updateRedirect = (apptId) => {
+  const updateRedirect = (apptId) => 
     history.push(`/appointments/update/${apptId}`)
+  
+  const cancelBooking = async (apptId) => {
+    const cancel = await deleteBooking(apptId)
+    setPageModified(prevState => prevState + 1)
   }
 
   return (
@@ -67,9 +72,15 @@ export default function GreenRoom(props) {
               </details>
               <button
                 value={a.id}
-                onClick={(e) => updateRedirect(e.target.value)}
+                onClick={(e) => history.push(`/appointments/update/${e.target.value}`)}
               >
                 Change
+              </button>
+              <button
+                value={a.id}
+                onClick={(e) => cancelBooking(e.target.value)}
+              >
+                Cancel
               </button>
             </li>
           ))}
