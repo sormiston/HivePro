@@ -8,7 +8,8 @@ import GreenRoom from '../screens/GreenRoom'
 import { getRooms } from '../services/CRUD'
 
 export default function MainContainer(props) {
-  const [roomsInventory, setRoomsInventory] = useState([])
+  const [roomsInventory, setRoomsInventory] = useState(null)
+  
   const { currentUser, currentDateTime } = props
 
   useEffect(() => {

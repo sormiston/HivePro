@@ -15,6 +15,7 @@ import moment from 'moment'
 function App() {
   const [currentUser, setCurrentUser] = useState(null)
   const [currentDateTime, setCurrentDateTime] = useState(moment())
+  const [showCurtainMenu, setShowCurtainMenu] = useState(false)
   const history = useHistory()
 
   useEffect(() => {
@@ -44,9 +45,12 @@ function App() {
     history.push('/')
   }
   return (
-   
     <Switch>
-       <Layout>
+      <Layout
+        currentUser={currentUser}
+        showCurtainMenu={showCurtainMenu}
+        setShowCurtainMenu={setShowCurtainMenu}
+      >
         <Route path='/login'>
           <Login loginSubmit={loginSubmit} />
         </Route>
@@ -59,9 +63,8 @@ function App() {
             currentDateTime={currentDateTime}
           />
         </Route>
-        </Layout>
-      </Switch>
-    
+      </Layout>
+    </Switch>
   )
 }
 
