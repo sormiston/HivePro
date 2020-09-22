@@ -26,7 +26,6 @@ export default function CheckAvail(props) {
 
   const handleClick = () => {
     if (currentUser === null) {
-      console.log('handle click!')
       return history.push('/login')
     } else {
       runCheck()

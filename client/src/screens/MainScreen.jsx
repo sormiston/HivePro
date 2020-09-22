@@ -13,7 +13,6 @@ export default function MainScreen(props) {
     .set({ hour: 0, minute: 0, second: 0 })
   const { id } = useParams()
 
-
   return (
     <>
       <Container>
@@ -22,32 +21,35 @@ export default function MainScreen(props) {
             Welcome, {currentUser ? currentUser.first_name : 'Guest'}
           </h4>
         </Notification>
-  
-        <Carousel className='gallery' renderIndicator={false} showThumbs={false}>
-          {roomsInventory &&
-            roomsInventory.map((room, idx) => (
-              <>
-      
-                <Card key={idx}>
-                  <Card.Header>
-                    <Card.Header.Title>Studio {room.room_num}</Card.Header.Title>
-                    </Card.Header>
-                <Card.Image size={'3by2'}>
-                  <Image src={room.img_url} />
-                  </Card.Image>
-                  <Card.Footer>
-                    <Card.Footer.Item>
-                      {room.sq_footage}<br />
-                      Space for: {room.max_cap}
-                    </Card.Footer.Item>                    
-                    <Card.Footer.Item>
-                      ${room.hourly_rt_day}/hr (Days)<br />
-                      ${room.hourly_rt_night}/hr (Nights)
-                    </Card.Footer.Item>
-                  </Card.Footer>
-                </Card>
-              </>
-            ))}
+
+        <Carousel
+          className='gallery'
+          renderIndicator={false}
+          showThumbs={false}
+        >
+          {roomsInventory.map((room, idx) => (
+            <Card key={idx}>
+              <Card.Header>
+                <Card.Header.Title>
+                  Studio {room.room_num}
+                </Card.Header.Title>
+              </Card.Header>
+              <Card.Image size={'3by2'}>
+                <Image src={room.img_url} />
+              </Card.Image>
+              <Card.Footer>
+                <Card.Footer.Item>
+                  {room.sq_footage}
+                  <br />
+                  Space for: {room.max_cap}
+                </Card.Footer.Item>
+                <Card.Footer.Item>
+                  ${room.hourly_rt_day}/hr (Days)
+                  <br />${room.hourly_rt_night}/hr (Nights)
+                </Card.Footer.Item>
+              </Card.Footer>
+            </Card>
+          ))}
         </Carousel>
         <CheckAvail
           currentUser={currentUser}
