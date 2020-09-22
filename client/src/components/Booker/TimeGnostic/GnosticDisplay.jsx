@@ -45,7 +45,6 @@ export default function GnosticDisplay(props) {
     <>
       <div id='rooms-avail'>{inventory.length} rooms available.</div>
       <Generic as='div' id='gnostic-display-wrapper'>
-        <Message className='booked'>Booked!</Message>
         {inventory.map((item) => (
           <Box className='avail' key={item.id}>
             <h4>Room: {item.room_num}</h4>
