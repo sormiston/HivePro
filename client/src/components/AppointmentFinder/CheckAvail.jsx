@@ -12,7 +12,8 @@ export default function CheckAvail(props) {
   const history = useHistory()
   // controlling state to calendar and timeFilter components
   const [selectedDateTime, setSelectedDate] = useState({
-    start: currentDate,
+    date: currentDate,
+    time: currentDate,
     dur: 2,
   })
   const [reducedInventory, setReducedInventory] = useState([])
@@ -31,11 +32,14 @@ export default function CheckAvail(props) {
       runCheck()
     }
   }
-  
+
   const runCheck = async () => {
-  
+    const dateTime = selectedDateTime.date
+      .clone()
+      .set('h', selectedDateTime.time.hour())
+
     let conflicts = await getConflicts(
-      selectedDateTime.start.format('YYYY-MM-DDTHH:00:00'),
+      dateTime.format('YYYY-MM-DDTHH:00:00'),
       String(selectedDateTime.dur)
     )
     conflicts = conflicts.map((c) => c.room_id)
@@ -44,34 +48,37 @@ export default function CheckAvail(props) {
     )
     setTouched(true)
   }
-  
+
   const buttonColor = () => {
-    return !touched ? 'warning' : roomsInventory && roomsInventory.length ? 'success' : 'danger'
+    return !touched
+      ? 'warning'
+      : roomsInventory && roomsInventory.length
+      ? 'success'
+      : 'danger'
   }
   return (
     <Container>
       <Box>
-      <Title subtitle>Check availability by date...</Title>
-      <Calendar
-        value={selectedDateTime.start}
-        updateState={updateState}
-      />
-        <TimeFilter
-          
-      	  selectedDateTime={selectedDateTime.start}
-      	  updateState={updateState}
+        <Title subtitle>Check availability by date...</Title>
+        <Calendar
+          value={selectedDateTime.date}
+          time={selectedDateTime.time}
+          updateState={updateState}
         />
-        
+        <TimeFilter
+          selectedDateTime={selectedDateTime.time}
+          updateState={updateState}
+        />
       </Box>
       <Button
         fullwidth={false}
         size={'large'}
         color={buttonColor()}
-        onClick={handleClick}>
+        onClick={handleClick}
+      >
         Check Available
-        </Button>
-       
-      
+      </Button>
+
       {touched && (
         <Box>
           <GnosticDisplay

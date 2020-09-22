@@ -6,8 +6,8 @@ export default function TimeFilter(props) {
 
   const handleChange = (e) => {
     const { className, value } = e.target
-    if (className === 'start') {
-      updateState(className, timeSlots[value])
+    if (className === 'time') {
+      updateState('time', timeSlots[value])
     } else {
       updateState(className, Number(value))
     }
@@ -23,17 +23,17 @@ export default function TimeFilter(props) {
   return (
     <Generic className="time-options" as={"span"}>
       <Select.Container className='time-start'>
-        <Select className='start' onChange={handleChange}>
-        <Select.Option className='start'>--:-- PM</Select.Option>
+        <Select className='time' onChange={handleChange}>
+        <Select.Option className='time'>--:-- PM</Select.Option>
       
           {timeSlots.map((slot, idx) => (
-            <Select.Option className='start' key={idx} value={idx}>{slot.format('hh:00A')}</Select.Option>
+            <Select.Option className='time' key={idx} value={idx}>{slot.format('hh:00A')}</Select.Option>
           ))}
           </Select>
         
       </Select.Container>
       <span>for...</span>
-      <Select.Container className='time-dur'>
+      <Select.Container className='dur'>
         <Select
           defaultValue={'2'}
           className='dur'

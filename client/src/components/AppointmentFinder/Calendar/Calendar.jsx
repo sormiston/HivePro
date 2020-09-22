@@ -11,7 +11,7 @@ import CalendarHeader from './Header'
 
 export default function Calendar(props) {
   const [calendar, setCalendar] = useState([])
-  const { value, updateState } = props
+  const { value, time, updateState } = props
   useEffect(() => {
     setCalendar(buildCalendar(value))
   }, [value])
@@ -33,7 +33,7 @@ export default function Calendar(props) {
               <div
                 key={i}
                 className='day'
-                onClick={() => !beforeToday(day) && updateState('start', day)}
+                onClick={() => !beforeToday(day) && updateState('date', day.clone().set('h', time.hour()))}
               >
                 <div className={dayStyles(day, value)}>
                   {day.format('D')}
