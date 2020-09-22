@@ -51,7 +51,7 @@ export default function Login(props) {
     </form>
     
       
-    <div className="form-container">
+    {/* <div className="form-container">
       <form onSubmit={(e) => {
         e.preventDefault();
         props.loginSubmit(formData);
@@ -73,7 +73,7 @@ export default function Login(props) {
       </Control>
           </Field>
       </form>
-    </div>
+    </div> */}
       </>
   );
 }
