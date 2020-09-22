@@ -27,10 +27,13 @@ export default function GnosticDisplay(props) {
   }
 
   const updateBooking = async (roomId) => {
+    const dateTime = selectedBooking.date
+      .clone()
+      .set('h', selectedBooking.time.hour())
     const body = {
       appointment: {
         room: Number(roomId),
-        booking_hour_start: selectedBooking.start
+        booking_hour_start: dateTime
           .clone()
           .format('YYYY-MM-DDTHH:00:00'),
         hours_booked: selectedBooking.dur,
