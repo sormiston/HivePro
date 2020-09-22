@@ -1,42 +1,44 @@
-
 @charset 'utf-8';
 
-@import "~bulma/sass/utilities/functions.sass";
+@import '~bulma/sass/utilities/functions.sass';
 
 // add new colors
 $react: #00d8ff !default;
 $react-invert: findColorInvert($react) !default;
-$custom-colors: ("react": ($react, $react-invert));
-
+$custom-colors: (
+  'react': (
+    $react,
+    $react-invert,
+  ),
+);
 
 // Import Bulma styles
-@import "~bulma/bulma";
+@import '~bulma/bulma';
 
 // Import rbx style fixes (**very simple**)
-@import "~rbx/rbx";
+@import '~rbx/rbx';
 
-$tablet-break: "screen and (min-width : 750px)";
-$desktop-break: "screen and (min-width : 1000px)";
+$tablet-break: 'screen and (min-width : 750px)';
+$desktop-break: 'screen and (min-width : 1000px)';
 
 body {
   min-height: 200vh;
 }
- div.container {
+div.container {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   max-width: 500px;
-  
+
   @media #{$tablet-break} {
     width: 100vw;
     margin: 0 0;
     max-width: unset;
-  
   }
 }
 
 div#below-fold.container {
-  div#gnostic-display-wrapper{
+  div#gnostic-display-wrapper {
     button {
       position: relative;
       right: 1rem;
@@ -50,44 +52,38 @@ div#below-fold.container {
       .box.avail * {
         text-align: left;
       }
-      }
-    
-    
+    }
   }
-  
+
   @media #{$tablet-break} {
     width: 100%;
     height: 1000px;
     display: grid;
-    grid-template-rows: 50px 500px 1fr;
+    grid-template-rows: 25px 25px 500px 1fr;
     grid-template-columns: repeat(2, 1fr);
     justify-items: center;
-    
+
     div.box {
-        grid-column: 1 / 2;
-        grid-row-start: -3;
-        
+      grid-column: 1 / 2;
+      grid-row: 2 / 4;
+    }
+    div#rooms-avail {
+      width: 100%;
+      grid-row: 2 / 3;
+      grid-column-start: 2;
     }
     div#gnostic-display-wrapper {
       grid-column: 2 / 3;
       grid-row: -3 / -1;
-      div#rooms-avail {
-        grid-row-start: 1;
-      }
-      
-  }
-    
+    }
+
     button {
       grid-column: 1 / 2;
-      grid-row: 3 / 4;
+      grid-row: 4 / 5;
       margin-left: 1rem;
-      
     }
   }
-  
 }
-
-
 
 .gallery h2 {
   color: $warning;
@@ -99,13 +95,12 @@ div.notification h4 {
 
 .calendar .header {
   background-color: $warning;
-  
-  div.next, div.previous {
-    
+
+  div.next,
+  div.previous {
     font-size: 3rem;
     font-weight: 400;
-    padding-right: .5rem;
-    
+    padding-right: 0.5rem;
   }
 }
 span.time-options {
