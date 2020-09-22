@@ -23,7 +23,7 @@ export default function MainScreen(props) {
           </h4>
         </Notification>
   
-        <Carousel className='gallery' renderIndicator={false}>
+        <Carousel className='gallery' renderIndicator={false} showThumbs={false}>
           {roomsInventory &&
             roomsInventory.map((room, idx) => (
               <>

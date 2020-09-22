@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import Calendar from './Calendar/Calendar'
 import TimeFilter from './TimeFilter'
 import GnosticDisplay from '../Booker/TimeGnostic/GnosticDisplay'
 import { getConflicts } from '../../services/CRUD'
-import { Container, Box, Title } from 'rbx'
+import { Container, Box, Title, Button } from 'rbx'
 
 export default function CheckAvail(props) {
+  // passdowns from App-level
   const { currentUser, currentDate, roomsInventory, updateId } = props
-  // dynamic date set by calendar component
+  const history = useHistory()
+  // controlling state to calendar and timeFilter components
   const [selectedDateTime, setSelectedDate] = useState({
     start: currentDate,
     dur: 2,
@@ -21,7 +24,17 @@ export default function CheckAvail(props) {
     }))
   }
 
+  const handleClick = () => {
+    if (currentUser === null) {
+      console.log('handle click!')
+      return history.push('/login')
+    } else {
+      runCheck()
+    }
+  }
+  
   const runCheck = async () => {
+  
     let conflicts = await getConflicts(
       selectedDateTime.start.format('YYYY-MM-DDTHH:00:00'),
       String(selectedDateTime.dur)
@@ -32,6 +45,10 @@ export default function CheckAvail(props) {
     )
     setTouched(true)
   }
+  
+  const buttonColor = () => {
+    return !touched ? 'warning' : roomsInventory && roomsInventory.length ? 'success' : 'danger'
+  }
   return (
     <Container>
       <Box>
@@ -40,13 +57,20 @@ export default function CheckAvail(props) {
         value={selectedDateTime.start}
         updateState={updateState}
       />
-      	<TimeFilter
+        <TimeFilter
+          
       	  selectedDateTime={selectedDateTime.start}
       	  updateState={updateState}
         />
         
       </Box>
-      <button onClick={runCheck}>Check</button>
+      <Button
+        fullwidth={false}
+        size={'large'}
+        color={buttonColor()}
+        onClick={handleClick}>
+        Check Available
+        </Button>
        
       
       {touched && (

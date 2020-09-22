@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Switch, Route, useHistory } from 'react-router-dom'
+import { Switch, Route, useHistory, useLocation } from 'react-router-dom'
 import Login from './screens/Login'
 import Register from './screens/Register'
 import MainContainer from './containers/MainContainer'
@@ -10,6 +10,7 @@ import {
   verifyUser,
   removeToken,
 } from './services/auth'
+
 import moment from 'moment'
 import "./mystyles.scss"
 
@@ -20,6 +21,7 @@ function App() {
   const [showCurtainMenu, setShowCurtainMenu] = useState(false)
   const [width, setWidth] = useState(window.innerWidth)
   const history = useHistory()
+  
 
   useEffect(() => {
     const handleVerify = async () => {
