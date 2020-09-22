@@ -28,6 +28,12 @@ body {
 nav {
   
 }
+
+.carousel .slidder-wrapper {
+  @media #{$desktop-break} {
+    max-height: 600px;
+  }
+}
 div.container {
   margin: 0 auto;
   display: flex;
@@ -39,6 +45,13 @@ div.container {
     margin: 0 0;
     max-width: unset;
   }
+}
+
+div.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
 }
 
 div#below-fold.container {

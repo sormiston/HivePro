@@ -24,6 +24,7 @@ export default function MainScreen(props) {
 
         <Carousel
           className='gallery'
+          autoPlay
           renderIndicator={false}
           showThumbs={false}
         >
@@ -38,7 +39,7 @@ export default function MainScreen(props) {
                   </Card.Header.Title>
                 </Card.Header>
                 <Card.Image size={'3by2'}>
-                  <Image src={room.img_url} />
+                  <Image size={'3by2'} src={room.img_url} />
                 </Card.Image>
                 <Card.Footer>
                   <Card.Footer.Item>

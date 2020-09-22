@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { Field, Label, Control, Input, Title } from 'rbx'
 
 export default function Login(props) {
   const [formData, setFormData] = useState({
@@ -18,6 +19,7 @@ export default function Login(props) {
   };
 
   return (
+    <>
     <form
       onSubmit={(e) => {
         e.preventDefault();
@@ -47,5 +49,31 @@ export default function Login(props) {
       <Link to="/register">Register</Link>
       <button type="submit">SUBMIT</button>
     </form>
+    
+      
+    <div className="form-container">
+      <form onSubmit={(e) => {
+        e.preventDefault();
+        props.loginSubmit(formData);
+        }}>
+          
+          <Field>
+            <Title>
+              Login
+            </Title>
+      <Label>Email</Label>
+      <Control>
+        <Input type="email" placeholder="e.g. alexsmith@gmail.com" />
+      </Control>
+    </Field>
+    <Field>
+      <Label>Password</Label>
+      <Control>
+        <Input type="password" placeholder="" />
+      </Control>
+          </Field>
+      </form>
+    </div>
+      </>
   );
 }
