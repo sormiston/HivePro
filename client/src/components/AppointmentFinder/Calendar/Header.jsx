@@ -34,6 +34,8 @@ export default function CalendarHeader({ value, updateState }) {
       </div>
       <div className='current'>
         {currMonthName()} {currYear()}
+        <br />
+        {value.format('HH:00')}
       </div>
       <div className='next' onClick={() => updateState('start', addMonth())}>
         {String.fromCharCode(187)}

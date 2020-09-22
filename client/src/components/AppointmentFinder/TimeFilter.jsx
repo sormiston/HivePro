@@ -36,7 +36,7 @@ export default function TimeFilter(props) {
       <Select.Container className='time-dur'>
         <Select
           defaultValue={'2'}
-          name='dur'
+          className='dur'
           onChange={handleChange}
         >
           <Select.Option value='1'>1 hour</Select.Option>
