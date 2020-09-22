@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import Calendar from './Calendar/Calendar'
 import TimeFilter from './TimeFilter'
 import GnosticDisplay from '../Booker/TimeGnostic/GnosticDisplay'
 import { getConflicts } from '../../services/CRUD'
-import { Container, Box, Title } from 'rbx'
+import { Container, Box, Title, Button } from 'rbx'
 
 export default function CheckAvail(props) {
+  // passdowns from App-level
   const { currentUser, currentDate, roomsInventory, updateId } = props
-  // dynamic date set by calendar component
+  const history = useHistory()
+  // controlling state to calendar and timeFilter components
   const [selectedDateTime, setSelectedDate] = useState({
-    start: currentDate,
+    date: currentDate,
+    time: currentDate,
     dur: 2,
   })
   const [reducedInventory, setReducedInventory] = useState([])
@@ -21,9 +25,21 @@ export default function CheckAvail(props) {
     }))
   }
 
+  const handleClick = () => {
+    if (currentUser === null) {
+      return history.push('/login')
+    } else {
+      runCheck()
+    }
+  }
+
   const runCheck = async () => {
+    const dateTime = selectedDateTime.date
+      .clone()
+      .set('h', selectedDateTime.time.hour())
+
     let conflicts = await getConflicts(
-      selectedDateTime.start.format('YYYY-MM-DDTHH:00:00'),
+      dateTime.format('YYYY-MM-DDTHH:00:00'),
       String(selectedDateTime.dur)
     )
     conflicts = conflicts.map((c) => c.room_id)
@@ -32,25 +48,39 @@ export default function CheckAvail(props) {
     )
     setTouched(true)
   }
+
+  const buttonColor = () => {
+    return !touched
+      ? 'warning'
+      : roomsInventory && roomsInventory.length
+      ? 'success'
+      : 'danger'
+  }
   return (
-    <Container>
-      <Box>
+    <Container id="below-fold">
       <Title subtitle>Check availability by date...</Title>
-      <Calendar
-        value={selectedDateTime.start}
-        updateState={updateState}
-      />
-      	<TimeFilter
-      	  selectedDateTime={selectedDateTime.start}
-      	  updateState={updateState}
+      <Box>
+        <Calendar
+          value={selectedDateTime.date}
+          time={selectedDateTime.time}
+          updateState={updateState}
         />
-        
+        <TimeFilter
+          selectedDateTime={selectedDateTime.time}
+          updateState={updateState}
+        />
       </Box>
-      <button onClick={runCheck}>Check</button>
-       
-      
+      <Button
+        fullwidth={false}
+        size={'large'}
+        color={buttonColor()}
+        onClick={handleClick}
+      >
+        Check Available
+      </Button>
+
       {touched && (
-        <Box>
+        
           <GnosticDisplay
             currentUser={currentUser}
             selectedBooking={selectedDateTime}
@@ -59,7 +89,7 @@ export default function CheckAvail(props) {
             setTouched={setTouched}
             updateId={updateId}
           />
-        </Box>
+        
       )}
     </Container>
   )

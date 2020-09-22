@@ -9,7 +9,7 @@ import { getRooms } from '../services/CRUD'
 
 
 export default function MainContainer(props) {
-  const [roomsInventory, setRoomsInventory] = useState(null)
+  const [roomsInventory, setRoomsInventory] = useState([])
   
   const { currentUser, currentDateTime } = props
 
