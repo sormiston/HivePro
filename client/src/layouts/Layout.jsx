@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 export default function Layout(props) {
-  const { currentUser, showCurtainMenu, setShowCurtainMenu } = props
+  const { currentUser, showCurtainMenu, setShowCurtainMenu, handleLogout } = props
 
   const Header = styled.nav`
     display: flex;
@@ -74,7 +74,7 @@ export default function Layout(props) {
             {currentUser ? '' : 'Login/Register'}
           </Link>
           <Link to='/green-room'>Green Room</Link>
-          <Link id='logoff'>Log Off</Link>
+          <Link id='logoff' onClick={handleLogout}>Log Off</Link>
         </div>
       </CurtainMenu>
       <Header>

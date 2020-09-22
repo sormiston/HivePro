@@ -28,9 +28,10 @@ export default function GreenRoom(props) {
   // FETCH query of associated appointments
   useEffect(() => {
     const fetchAppointments = async () => {
-      const apptArray = await getAppointmentsByBand(
+      let apptArray = await getAppointmentsByBand(
         currentUser.band_id
       )
+      apptArray = apptArray.sort()
       setAppointments(apptArray)
     }
     currentUser && fetchAppointments()

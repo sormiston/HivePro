@@ -57,6 +57,7 @@ function App() {
         currentUser={currentUser}
         showCurtainMenu={showCurtainMenu}
         setShowCurtainMenu={setShowCurtainMenu}
+        handleLogout={handleLogout}
       >
         <Route path='/login'>
           <Login loginSubmit={loginSubmit} />
