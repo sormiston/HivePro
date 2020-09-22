@@ -1,7 +1,8 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { postBooking, patchBooking } from '../../../services/CRUD'
-import { Box } from 'rbx'
+import { Box, Generic } from 'rbx'
+import Button from '@material-ui/core/Button'
 
 export default function GnosticDisplay(props) {
   
@@ -20,7 +21,6 @@ export default function GnosticDisplay(props) {
       },
     }
     const post = await postBooking(body)
-    console.log(post)
   }
   
   const updateBooking = async (roomId) => {
@@ -36,16 +36,15 @@ export default function GnosticDisplay(props) {
     
     const patch = await patchBooking(updateId, body)
     history.push('/green-room')
-    
   }
 
   return (
     <>
     <div id="rooms-avail">{inventory.length} rooms available.</div>
-    <Box id="gnostic-display-wrapper">
+    <Generic as="div" id="gnostic-display-wrapper">
       
       {inventory.map((item) => (
-        <div key={item.id}>
+        <Box className='avail' key={item.id}>
           <h4>Room: {item.room_num}</h4>
           <p>Sq. Footage: {item.sq_footage}</p>
           <p>Max Capacity: {item.max_cap}</p>
@@ -54,15 +53,16 @@ export default function GnosticDisplay(props) {
             <summary>Equipment</summary>
             <p>{item.fixed_equipment}</p>
           </details>
-          <button
+          <Button
+            variant='contained'
             value={item.id}
             onClick={updateId ? (e)=> updateBooking(e.target.value) : (e) => makeBooking(e.target.value)}
           >
             {updateId ? 'Change to this Booking' : 'Book'}
-          </button>
-        </div>
+          </Button>
+        </Box>
       ))}
-      </Box>
+      </Generic>
       </>
   )
 }
