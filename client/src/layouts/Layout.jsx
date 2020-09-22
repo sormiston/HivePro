@@ -52,6 +52,9 @@ export default function Layout(props) {
       justify-content: space-around;
       z-index: 102;
     }
+    a#logoff {
+      display: ${currentUser ? '' : 'none'};
+    }
     * {
       display: ${showCurtainMenu ? 'block' : 'none'};
       font-size: 2rem;
@@ -71,6 +74,7 @@ export default function Layout(props) {
             {currentUser ? '' : 'Login/Register'}
           </Link>
           <Link to='/green-room'>Green Room</Link>
+          <Link id='logoff'>Log Off</Link>
         </div>
       </CurtainMenu>
       <Header>
