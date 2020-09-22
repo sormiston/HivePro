@@ -57,9 +57,9 @@ export default function CheckAvail(props) {
       : 'danger'
   }
   return (
-    <Container>
+    <Container id="below-fold">
+      <Title subtitle>Check availability by date...</Title>
       <Box>
-        <Title subtitle>Check availability by date...</Title>
         <Calendar
           value={selectedDateTime.date}
           time={selectedDateTime.time}
@@ -80,7 +80,7 @@ export default function CheckAvail(props) {
       </Button>
 
       {touched && (
-        <Box>
+        
           <GnosticDisplay
             currentUser={currentUser}
             selectedBooking={selectedDateTime}
@@ -89,7 +89,7 @@ export default function CheckAvail(props) {
             setTouched={setTouched}
             updateId={updateId}
           />
-        </Box>
+        
       )}
     </Container>
   )

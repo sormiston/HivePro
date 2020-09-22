@@ -1,6 +1,7 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { postBooking, patchBooking } from '../../../services/CRUD'
+import { Box } from 'rbx'
 
 export default function GnosticDisplay(props) {
   
@@ -32,15 +33,17 @@ export default function GnosticDisplay(props) {
         hours_booked: selectedBooking.dur
       }
     }
-    console.log('updateBooking function: ' + updateId, roomId)
+    
     const patch = await patchBooking(updateId, body)
     history.push('/green-room')
     
   }
 
   return (
-    <div>
-      <div>{inventory.length} rooms available.</div>
+    <>
+    <div id="rooms-avail">{inventory.length} rooms available.</div>
+    <Box id="gnostic-display-wrapper">
+      
       {inventory.map((item) => (
         <div key={item.id}>
           <h4>Room: {item.room_num}</h4>
@@ -59,6 +62,7 @@ export default function GnosticDisplay(props) {
           </button>
         </div>
       ))}
-    </div>
+      </Box>
+      </>
   )
 }
