@@ -27,6 +27,7 @@ export default function MainScreen(props) {
           autoPlay
           renderIndicator={false}
           showThumbs={false}
+          showStatus={false}
         >
          
           {roomsInventory && 
