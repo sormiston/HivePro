@@ -25,15 +25,22 @@ body {
   min-height: 200vh;
 }
 
-nav {
-  
+.carousel-root {
+  display: flex;
+  justify-content: center;
 }
 
-.carousel .slidder-wrapper {
-  @media #{$desktop-break} {
-    max-height: 600px;
+.carousel.carousel-slider {
+  @media #{$tablet-break} {
+    margin: 0 2rem;
+    width: 90% !important;
+  }
+  .slider-wrapper {
+    @media #{$desktop-break} {
+    }
   }
 }
+
 div.container {
   margin: 0 auto;
   display: flex;
@@ -51,27 +58,10 @@ div.form-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  
 }
 
 div#below-fold.container {
-  div#gnostic-display-wrapper {
-    button {
-      position: relative;
-      right: 1rem;
-    }
-    @media #{$desktop-break} {
-      justify-self: start;
-      width: 100%;
-      .box.avail {
-        min-width: 100%;
-      }
-      .box.avail * {
-        text-align: left;
-      }
-    }
-  }
-
+  
   @media #{$tablet-break} {
     width: 100%;
     height: 1000px;
@@ -80,6 +70,15 @@ div#below-fold.container {
     grid-template-columns: repeat(2, 1fr);
     justify-items: center;
 
+    div.box {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      
+      span.time-options {
+        z-index: 1;
+      }
+    }
     div.box {
       grid-column: 1 / 2;
       grid-row: 2 / 4;
@@ -100,6 +99,32 @@ div#below-fold.container {
       margin-left: 1rem;
     }
   }
+  .calendar .header {
+    background-color: $warning;
+    div.next,
+    div.previous {
+      font-size: 3rem;
+      font-weight: 400;
+      padding-right: 0.5rem;
+      cursor: pointer;
+    }
+  }
+  div#gnostic-display-wrapper {
+    button {
+      position: relative;
+      right: 1rem;
+    }
+    @media #{$desktop-break} {
+      justify-self: start;
+      width: 100%;
+      .box.avail {
+        min-width: 100%;
+      }
+      .box.avail * {
+        text-align: left;
+      }
+    }
+  }
 }
 
 .gallery h2 {
@@ -110,16 +135,6 @@ div.notification h4 {
   text-align: left;
 }
 
-.calendar .header {
-  background-color: $warning;
-
-  div.next,
-  div.previous {
-    font-size: 3rem;
-    font-weight: 400;
-    padding-right: 0.5rem;
-  }
-}
 span.time-options {
   display: flex;
   justify-content: space-around;

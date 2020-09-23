@@ -12,6 +12,7 @@ import CalendarHeader from './Header'
 export default function Calendar(props) {
   const [calendar, setCalendar] = useState([])
   const { value, time, updateState } = props
+  
   useEffect(() => {
     setCalendar(buildCalendar(value))
   }, [value])

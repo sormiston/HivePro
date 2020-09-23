@@ -1,8 +1,6 @@
 import React from 'react'
+import moment from 'moment'
 
-// CALENDAR FUNCTION from LIVE TUTORIAL CODE-ALONG
-// credit Mark Tellez - "devmentorlive"
-// https://www.youtube.com/watch?v=5jRrVqRWqsM
 
 export default function CalendarHeader({ value, updateState }) {
   function currMonthName() {
@@ -22,21 +20,39 @@ export default function CalendarHeader({ value, updateState }) {
   }
 
   function thisMonth() {
-    return value.isSame(new Date(), 'month')
+    return value.isSame(moment(), 'month')
+  }
+
+  function futureCutOff() {
+    return value
+      .clone()
+      .add(1, 'month')
+      .isBefore(moment().add(3, 'month'))
   }
   return (
     <div className='header'>
       <div
         className='previous'
-        onClick={() => !thisMonth() && updateState('start', prevMonth())}
+        onClick={() =>
+          !thisMonth() && updateState('date', prevMonth())
+        }
       >
-       <span>{!thisMonth() ? String.fromCharCode(171) : null}</span> 
+        <span className='calendar-header-arrow'>
+          {!thisMonth() ? String.fromCharCode(171) : null}
+        </span>
       </div>
       <div className='current'>
-        {currMonthName()} {currYear()}
+        <span className='calendar-header'>
+          {currMonthName()} {currYear()}
+        </span>
       </div>
-      <div className='next' onClick={() => updateState('start', addMonth())}>
-        {String.fromCharCode(187)}
+      <div
+        className='next'
+        onClick={() => updateState('date', addMonth())}
+      >
+        <span className='calendar-header-arrow'>
+          {futureCutOff() ? String.fromCharCode(187) : null}
+        </span>
       </div>
     </div>
   )
