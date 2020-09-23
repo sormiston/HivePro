@@ -22,16 +22,16 @@ export default function MainScreen(props) {
           </h4>
         </Notification>
 
+        {roomsInventory && roomsInventory.length > 0 && (
         <Carousel
           className='gallery'
-          autoPlay
+          autoPlay={true}
           renderIndicator={false}
           showThumbs={false}
+            showStatus={false}
+            infiniteLoop={true}
         >
-         
-          {roomsInventory && 
-            
-            roomsInventory.map((room, idx) => (
+            {roomsInventory.map((room, idx) => (
               <Card key={idx}>
                 <Card.Header>
                   <Card.Header.Title>
@@ -55,6 +55,7 @@ export default function MainScreen(props) {
               </Card>
             ))}
         </Carousel>
+        )}
         
         <CheckAvail
           currentUser={currentUser}
