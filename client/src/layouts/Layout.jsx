@@ -68,6 +68,7 @@ export default function Layout(props) {
       <CurtainMenu
         id='curtain-menu'
         onClick={() => setShowCurtainMenu((prevState) => !prevState)}
+        props={props}
       >
         <div className='content-wrapper'>
           <Link to='/login'>

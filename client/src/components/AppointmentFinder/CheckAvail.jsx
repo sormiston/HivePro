@@ -59,7 +59,7 @@ export default function CheckAvail(props) {
   }
   return (
     <Container id='below-fold'>
-      <Box>
+      <Box className='calendar-wrapper'>
         <h2>Check availability by date...</h2>
         <Calendar
           value={selectedDateTime.date}
