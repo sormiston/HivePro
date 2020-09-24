@@ -10,14 +10,18 @@ const Header = styled.nav`
   height: 5.5rem;
   color: #f9c767;
   justify-content: space-between;
-  
-div.header-options {
-  flex: 0 1 40%;
-  align-self: flex-end;
-  display: flex;
-  justify-content: flex-end;
-  
-}
+
+  div.right-group {
+    flex: 0 0 50%;
+    display: flex;
+    justify-content: space-between;
+    div.nav-links {
+      display: flex;
+      flex: 1 0 80%;
+      justify-content: space-around;
+      align-self: flex-end;
+    }
+  }
   img {
     width: 4.75rem;
     margin: 0.8rem;
@@ -111,30 +115,31 @@ export default function Layout(props) {
           </div>
         </Link>
 
-        
-        <div className="header-options">
-          {pathname === '/green-room' ? (
-            <Link to='/'>Home & Scheduling</Link>
-          ) : (
-            <Link to='/green-room'>Green Room</Link>
-          )}
-  
-          {currentUser ? (
-            <Link onClick={handleLogout}>Log Off</Link>
-          ) : (
-            <Link to='/login'>Login</Link>
-          )}
-        </div>
+        <div className='right-group'>
+          <div className='nav-links'>
+            {pathname === '/green-room' ? (
+              <Link to='/'>Home & Scheduling</Link>
+            ) : (
+              <Link to='/green-room'>Green Room</Link>
+            )}
 
-        <div
-          className='burger-menu'
-          onClick={() =>
-            setShowCurtainMenu((prevState) => !prevState)
-          }
-        >
-          <span></span>
-          <span></span>
-          <span></span>
+            {currentUser ? (
+              <Link onClick={handleLogout}>Log Off</Link>
+            ) : (
+              <Link to='/login'>Login</Link>
+            )}
+          </div>
+
+          <div
+            className='burger-menu'
+            onClick={() =>
+              setShowCurtainMenu((prevState) => !prevState)
+            }
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </div>
       </Header>
 
