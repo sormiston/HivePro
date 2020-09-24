@@ -25,6 +25,12 @@ body {
   height: 201vh;
 }
 
+nav div.burger-menu {
+  @media #{$desktop-break} {
+    visibility: hidden;
+  }  
+}
+
 div.container {
   margin: 0 auto;
   display: flex;
@@ -89,6 +95,9 @@ div#below-fold.container {
     @media #{$desktop-break} {
       justify-self: start;
       width: 100%;
+      height: 100%;
+      overflow-y: scroll;
+      
       .box.avail {
         width: 90%;
       }
@@ -101,7 +110,7 @@ div#below-fold.container {
   @media #{$tablet-break} {
     width: 100%;
     display: grid;
-    grid-template-rows: 25px 25px 500px 1fr;
+    grid-template-rows: 5vh 5vh 80vh;
     grid-template-columns: repeat(2, 1fr);
     justify-items: center;
 
