@@ -22,7 +22,7 @@ $tablet-break: 'screen and (min-width : 750px)';
 $desktop-break: 'screen and (min-width : 1000px)';
 
 body {
-  min-height: 200vh;
+  height: 201vh;
 }
 
 div.container {
@@ -39,30 +39,22 @@ div.container {
 }
 
 .carousel-root {
+  .gallery h2 {
+    color: $warning;
+  }
   .carousel.carousel-slider {
     .slider-wrapper {
-      // max-height: 600px;
-      li.slide {
-        // max-height: 600px;
-        // display: flex;
-      div.card {
-        // display: flex;
-        // flex-flow: column nowrap;
-        div.card-image img{
-          max-height: 500px;
-          object-fit: cover;
+          div.card-image img {
+            max-height: 500px;
+            object-fit: cover;
+          }
         }
-      }
-        
-      }
-    }
-    
     @media #{$tablet-break} {
-      margin: 0 2rem;
+      margin: 0 auto;
       width: 90% !important;
     }
-    }
   }
+}
 
 div.form-container {
   display: flex;
@@ -71,13 +63,41 @@ div.form-container {
 }
 
 div#below-fold.container {
-  
   div.box.calendar-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     min-height: 550px;
   }
+  
+  .calendar .header {
+    background-color: $warning;
+    div.next,
+    div.previous {
+      font-size: 3rem;
+      font-weight: 400;
+      padding-right: 0.5rem;
+      cursor: pointer;
+    }
+  }
+  
+  div#gnostic-display-wrapper {
+    button {
+      position: relative;
+      right: 1rem;
+    }
+    @media #{$desktop-break} {
+      justify-self: start;
+      width: 100%;
+      .box.avail {
+        width: 90%;
+      }
+      .box.avail * {
+        text-align: left;
+      }
+    }
+  }
+  
   @media #{$tablet-break} {
     width: 100%;
     display: grid;
@@ -85,8 +105,7 @@ div#below-fold.container {
     grid-template-columns: repeat(2, 1fr);
     justify-items: center;
 
-
-    div.box.calendar-wrapper{
+    div.box.calendar-wrapper {
       grid-column: 1 / 2;
       grid-row: 2 / 4;
     }
@@ -98,45 +117,13 @@ div#below-fold.container {
     div#gnostic-display-wrapper {
       grid-column: 2 / 3;
       grid-row: -3 / -1;
-      
     }
-
     button {
       grid-column: 1 / 2;
       grid-row: 4 / 5;
       margin-left: 1rem;
     }
   }
-  .calendar .header {
-    background-color: $warning;
-    div.next,
-    div.previous {
-      font-size: 3rem;
-      font-weight: 400;
-      padding-right: 0.5rem;
-      cursor: pointer;
-    }
-  }
-  div#gnostic-display-wrapper {
-    button {
-      position: relative;
-      right: 1rem;
-    }
-    @media #{$desktop-break} {
-      justify-self: start;
-      width: 100%;
-      .box.avail {
-        min-width: 100%;
-      }
-      .box.avail * {
-        text-align: left;
-      }
-    }
-  }
-}
-
-.gallery h2 {
-  color: $warning;
 }
 
 div.notification h4 {
