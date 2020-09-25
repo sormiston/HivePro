@@ -20,6 +20,7 @@ $custom-colors: (
 
 $tablet-break: 'screen and (min-width : 750px)';
 $desktop-break: 'screen and (min-width : 1000px)';
+$slate-grey: #2d3436;
 
 body {
   background: rgb(131, 58, 180);
@@ -29,7 +30,7 @@ body {
     rgba(253, 29, 29, 1) 50%,
     rgba(252, 176, 69, 1) 100%
   );
-  height: 201vh;
+  height: 180vh;
 }
 
 div.burger-menu {
@@ -42,11 +43,11 @@ div.container {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  max-width: 500px;
+  scroll-snap-type: y mandatory;
 
   @media #{$tablet-break} {
     width: 100vw;
-    margin: 0 0;
+    margin: 0 auto;
     max-width: unset;
   }
 }
@@ -55,8 +56,13 @@ div.container {
   .gallery h2 {
     color: $warning;
   }
+  .card { 
+    background-color:$slate-grey;
+    color: $warning;
+  }
   .card-header-title {
-    background-color: #a5b8c0;
+    background-color:$slate-grey;
+    color: $warning;
   }
   .carousel.carousel-slider {
     button.control-arrow {
@@ -73,8 +79,8 @@ div.container {
         object-fit: cover;
       }
       div.card-footer-item {
-        background-color: #a5b8c0;
-        color: $dark;
+        background-color:$slate-grey;
+        
         font-weight: 600;
       }
     }
@@ -93,17 +99,15 @@ div.form-container {
 }
 
 div#below-fold.container {
+  
+  scroll-snap-align: start;
   div.box.calendar-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 550px;
-    background: rgb(97, 97, 97);
-    background: linear-gradient(
-      45deg,
-      rgba(97, 97, 97, 1) 0%,
-      rgba(165, 184, 192, 1) 80%
-    );
+    background-color: $slate-grey;
+    
 
     h2,
     .time-options > span:nth-child(2) {
@@ -201,6 +205,14 @@ div.register-form-container {
       place-self: end center;
     }
   }
+} 
 }
-  
+
+div.session-list {
+  max-width: 65%;
+  margin: 0 auto;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  background-color: $slate-grey;
+  color: $warning;
 }
