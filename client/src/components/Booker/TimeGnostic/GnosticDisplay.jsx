@@ -1,8 +1,8 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { postBooking, patchBooking } from '../../../services/CRUD'
-import { Box, Generic } from 'rbx'
-import Button from '@material-ui/core/Button'
+import { Box, Generic, Button } from 'rbx'
+// import Button from '@material-ui/core/Button'
 
 export default function GnosticDisplay(props) {
   const { currentUser, selectedBooking, inventory, updateId } = props

@@ -19,7 +19,6 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null)
   const [currentDateTime, setCurrentDateTime] = useState(moment())
   const [showCurtainMenu, setShowCurtainMenu] = useState(false)
-  const [width, setWidth] = useState(window.innerWidth)
   const history = useHistory()
   
 

@@ -22,18 +22,22 @@ $tablet-break: 'screen and (min-width : 750px)';
 $desktop-break: 'screen and (min-width : 1000px)';
 
 body {
-  min-height: 200vh;
+  background: rgb(131, 58, 180);
+  background: linear-gradient(
+    207deg,
+    rgba(131, 58, 180, 1) 0%,
+    rgba(253, 29, 29, 1) 50%,
+    rgba(252, 176, 69, 1) 100%
+  );
+  height: 201vh;
 }
 
-nav {
-  
-}
-
-.carousel .slidder-wrapper {
-  @media #{$desktop-break} {
-    max-height: 600px;
+div.burger-menu {
+  @media #{$tablet-break} {
+    display: none;
   }
 }
+
 div.container {
   margin: 0 auto;
   display: flex;
@@ -47,14 +51,79 @@ div.container {
   }
 }
 
+.carousel-root {
+  .gallery h2 {
+    color: $warning;
+  }
+  .card-header-title {
+    background-color: #a5b8c0;
+  }
+  .carousel.carousel-slider {
+    button.control-arrow {
+      width: 10%;
+      &:hover {
+        background: rgba(0, 0, 0, 0.3);
+      }
+    }
+    .slider-wrapper {
+      max-width: 80%;
+      div.card-image img {
+        max-height: 400px;
+
+        object-fit: cover;
+      }
+      div.card-footer-item {
+        background-color: #a5b8c0;
+        color: $dark;
+        font-weight: 600;
+      }
+    }
+    @media #{$tablet-break} {
+      margin: 0 auto;
+      width: 80% !important;
+    }
+  }
+}
+
 div.form-container {
+  margin-top: 4.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  
 }
 
 div#below-fold.container {
+  div.box.calendar-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 550px;
+    background: rgb(97, 97, 97);
+    background: linear-gradient(
+      45deg,
+      rgba(97, 97, 97, 1) 0%,
+      rgba(165, 184, 192, 1) 80%
+    );
+
+    h2,
+    .time-options > span:nth-child(2) {
+      font-weight: 600;
+      color: $warning;
+      font-size: 1.75rem;
+    }
+  }
+
+  .calendar .header {
+    background-color: $warning;
+    div.next,
+    div.previous {
+      font-size: 3rem;
+      font-weight: 400;
+      padding-right: 0.5rem;
+      cursor: pointer;
+    }
+  }
+
   div#gnostic-display-wrapper {
     button {
       position: relative;
@@ -63,8 +132,11 @@ div#below-fold.container {
     @media #{$desktop-break} {
       justify-self: start;
       width: 100%;
+      height: 100%;
+      overflow-y: scroll;
+
       .box.avail {
-        min-width: 100%;
+        width: 90%;
       }
       .box.avail * {
         text-align: left;
@@ -74,13 +146,12 @@ div#below-fold.container {
 
   @media #{$tablet-break} {
     width: 100%;
-    height: 1000px;
     display: grid;
-    grid-template-rows: 25px 25px 500px 1fr;
+    grid-template-rows: 5vh 5vh 80vh;
     grid-template-columns: repeat(2, 1fr);
     justify-items: center;
 
-    div.box {
+    div.box.calendar-wrapper {
       grid-column: 1 / 2;
       grid-row: 2 / 4;
     }
@@ -93,7 +164,6 @@ div#below-fold.container {
       grid-column: 2 / 3;
       grid-row: -3 / -1;
     }
-
     button {
       grid-column: 1 / 2;
       grid-row: 4 / 5;
@@ -102,26 +172,35 @@ div#below-fold.container {
   }
 }
 
-.gallery h2 {
-  color: $warning;
-}
-
 div.notification h4 {
   text-align: left;
 }
 
-.calendar .header {
-  background-color: $warning;
-
-  div.next,
-  div.previous {
-    font-size: 3rem;
-    font-weight: 400;
-    padding-right: 0.5rem;
-  }
-}
 span.time-options {
   display: flex;
   justify-content: space-around;
   align-items: baseline;
+}
+
+div.register-form-container {
+  width: 60%;
+  margin: 0 auto;
+  ::-moz-placeholder, ::placeholder, ::-webkit-input-placeholder {
+    color: black;
+  }
+  
+  @media screen and (min-width : 885px) {
+    form {
+      height: 25%;
+    display: grid;
+    grid-template-columns: 20% 30% 20% 30%;
+    grid-template-rows: 80px repeat(3, 50px) 70px;
+  
+    .title, button#submit {
+      grid-column: 1 / 5;
+      place-self: end center;
+    }
+  }
+}
+  
 }

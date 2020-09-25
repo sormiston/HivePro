@@ -18,6 +18,7 @@ export default function CheckAvail(props) {
   })
   const [reducedInventory, setReducedInventory] = useState([])
   const [touched, setTouched] = useState(false)
+  
   const updateState = (k, v) => {
     setSelectedDate((prevState) => ({
       ...prevState,
@@ -57,9 +58,9 @@ export default function CheckAvail(props) {
       : 'danger'
   }
   return (
-    <Container id="below-fold">
-      <Title subtitle>Check availability by date...</Title>
-      <Box>
+    <Container id='below-fold'>
+      <Box className='calendar-wrapper'>
+        <h2>Check availability by date...</h2>
         <Calendar
           value={selectedDateTime.date}
           time={selectedDateTime.time}
@@ -69,28 +70,28 @@ export default function CheckAvail(props) {
           selectedDateTime={selectedDateTime.time}
           updateState={updateState}
         />
-      </Box>
+      
       <Button
         fullwidth={false}
         size={'large'}
         color={buttonColor()}
         onClick={handleClick}
       >
-        Check Available
+            Check Available
       </Button>
+      </Box>
+      
 
       {touched && (
-        
-          <GnosticDisplay
-            currentUser={currentUser}
-            selectedBooking={selectedDateTime}
-            inventory={reducedInventory}
-            touched={touched}
-            setTouched={setTouched}
-            updateId={updateId}
-          />
-        
+        <GnosticDisplay
+          currentUser={currentUser}
+          selectedBooking={selectedDateTime}
+          inventory={reducedInventory}
+          touched={touched}
+          setTouched={setTouched}
+          updateId={updateId}
+        />
       )}
-    </Container>
+      </Container>
   )
 }
