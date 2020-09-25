@@ -2,7 +2,7 @@ import React from 'react'
 
 import styled from 'styled-components'
 import { Link, useLocation } from 'react-router-dom'
-import { Dropdown } from 'rbx'
+import { Button } from 'rbx'
 
 const Header = styled.nav`
   display: flex;
@@ -12,14 +12,15 @@ const Header = styled.nav`
   justify-content: space-between;
 
   div.right-group {
-    flex: 0 0 50%;
+    flex: 0 0 30%;
     display: flex;
     justify-content: space-between;
     div.nav-links {
       display: flex;
-      flex: 1 0 80%;
+      flex: 1 0%;
+      
       justify-content: space-around;
-      align-self: flex-end;
+      align-self: center;
     }
   }
   img {
@@ -117,16 +118,24 @@ export default function Layout(props) {
 
         <div className='right-group'>
           <div className='nav-links'>
-            {pathname === '/green-room' ? (
-              <Link to='/'>Home & Scheduling</Link>
+            {pathname !== '/' ? (
+              <Button className='nav-link' color='warning'>
+                <Link to='/'>Home & Scheduling</Link>
+              </Button>
             ) : (
-              <Link to='/green-room'>Green Room</Link>
+              <Button className='nav-link' color='warning'>
+                <Link to='/green-room'>Green Room</Link>
+              </Button>
             )}
 
             {currentUser ? (
-              <Link onClick={handleLogout}>Log Off</Link>
+              <Button className='nav-link' color='warning'>
+                <Link onClick={handleLogout}>Log Off</Link>
+              </Button>
             ) : (
-              <Link to='/login'>Login</Link>
+              <Button className='nav-link' color='warning'>
+                <Link to='/login'>Login</Link>
+              </Button>
             )}
           </div>
 
