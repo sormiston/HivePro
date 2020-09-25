@@ -23,7 +23,11 @@ class AppointmentsController < ApplicationController
   # GET /appointments/band/:band_id
 
   def index_belonging_to_band
-    @appointments = Appointment.where(band: params[:band_id])
+    puts DateTime.now
+    @appointments = Appointment
+                    .where(band: params[:band_id])
+                    .where('booking_hour_start > ?', DateTime.now)
+
     render json: @appointments, include: :room
   end
 
