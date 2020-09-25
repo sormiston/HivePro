@@ -12,15 +12,19 @@ const Header = styled.nav`
   justify-content: space-between;
 
   div.right-group {
-    flex: 0 0 30%;
+    flex: 0 0 45%;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     div.nav-links {
       display: flex;
-      flex: 1 0%;
-      
       justify-content: space-around;
       align-self: center;
+      button {
+        margin: 0 2rem; 
+      }
+      @media screen and (max-width : 750px) {
+        display: none;
+      }
     }
   }
   img {
@@ -32,6 +36,9 @@ const Header = styled.nav`
     display: flex;
     flex-flow: column;
     justify-content: space-evenly;
+    @media screen and (min-width: 750px) {
+      display: none;
+    }
   }
   span {
     width: 60px;
