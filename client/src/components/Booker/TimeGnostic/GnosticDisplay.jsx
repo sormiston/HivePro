@@ -23,7 +23,8 @@ export default function GnosticDisplay(props) {
         hours_booked: selectedBooking.dur,
       },
     }
-    const post = await postBooking(body)
+    await postBooking(body)
+    history.push('/green-room')
   }
 
   const updateBooking = async (roomId) => {

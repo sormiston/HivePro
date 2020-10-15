@@ -76,6 +76,7 @@
   color: var(--black);
   z-index: 100;
   line-height: 44px;
+  cursor: pointer;
 }
 
 .calendar .day div.before {

@@ -161,10 +161,10 @@ https://app.lucidchart.com/documents/edit/2a7496c7-2e0e-4dee-8ee9-4da4c8f41b5d/0
 See MosCoW tab: https://app.lucidchart.com/invitations/accept/e61861fc-fb33-41a1-9e64-bc25156d0e69
 ***
 
-## Code Showcase
-
-> Use this section to include a brief code snippet of functionality that you are proud of and a brief description.
-
 ## Code Issues & Resolutions
 
-> Use this section to list of all major issues encountered and their resolution.
+Post-deploy issues
+
+| Date observed | Issue                                           | Date resolved | notes |
+| --------------| :----------------------------------------------:| :-----------:|:------:|
+| 10102020      | links in nav bar buttons not fully exposed      |               |       |

@@ -11,8 +11,11 @@ const BandSplash = styled.main`
     font-family: ${props => props.currentUser ? props.currentUser.band.font : 'Arial'};
     width: 80%;
     h1 {
-      font-size: 100px;
+      font-size: 60px;
       font-weight: 800;
+      @media screen and (min-width : 750px) {
+        font-size: 100px;
+      }
     }
 
     ul {
@@ -35,6 +38,7 @@ const BandSplash = styled.main`
     button {
       margin: .5rem 1rem;
     }
+    
   `
 
 export default function GreenRoom(props) {

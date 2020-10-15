@@ -1,5 +1,4 @@
 @charset 'utf-8';
-
 @import '~bulma/sass/utilities/functions.sass';
 
 // add new colors
@@ -18,11 +17,35 @@ $custom-colors: (
 // Import rbx style fixes (**very simple**)
 @import '~rbx/rbx';
 
+// variables
 $tablet-break: 'screen and (min-width : 750px)';
 $desktop-break: 'screen and (min-width : 1000px)';
 $slate-grey: #2d3436;
 
+
+
+// top globals
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+a {
+  color: unset;
+  text-decoration: unset;
+}
+
+summary {
+  outline: none;
+}
+
 body {
+  @extend html;
+  margin: 0;
+  text-align: center;
   background: rgb(131, 58, 180);
   background: linear-gradient(
     207deg,
@@ -30,18 +53,22 @@ body {
     rgba(253, 29, 29, 1) 50%,
     rgba(252, 176, 69, 1) 100%
   );
-  height: 180vh;
+  min-height: 100vh;
 }
 
-div.burger-menu {
-  @media #{$tablet-break} {
-    display: none;
-  }
-}
+
+// main styles
+
+// div.burger-menu {
+  
+//   @media #{$tablet-break} {
+//     display: none;
+//   }
+// }
 
 div.container {
   margin: 0 auto;
-  display: flex;
+  // display: flex;
   flex-direction: column;
   scroll-snap-type: y mandatory;
 
@@ -99,7 +126,7 @@ div.form-container {
 }
 
 div#below-fold.container {
-  
+  margin: 1rem;
   scroll-snap-align: start;
   div.box.calendar-wrapper {
     display: flex;
@@ -184,6 +211,7 @@ span.time-options {
   display: flex;
   justify-content: space-around;
   align-items: baseline;
+  margin: 1rem;
 }
 
 div.register-form-container {

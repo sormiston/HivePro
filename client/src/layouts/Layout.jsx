@@ -20,9 +20,9 @@ const Header = styled.nav`
       justify-content: space-around;
       align-self: center;
       button {
-        margin: 0 2rem; 
+        margin: 0 2rem;
       }
-      @media screen and (max-width : 750px) {
+      @media screen and (max-width: 750px) {
         display: none;
       }
     }
@@ -36,15 +36,35 @@ const Header = styled.nav`
     display: flex;
     flex-flow: column;
     justify-content: space-evenly;
+    cursor: pointer;
+    transition: all 0.5s ease-out;
+    transform: ${(props) => (props.showCurtainMenu ? 'rotate(180deg)' : 'none')};
+    z-index: 3;
+
     @media screen and (min-width: 750px) {
       display: none;
     }
-  }
-  span {
-    width: 60px;
-    height: 4px;
-    background-color: #f9c767;
-    display: inline-block;
+
+    span {
+      width: 50px;
+      height: 4px;
+      margin: 0 0 5px;
+      background-color: ${(props) => (props.showCurtainMenu ? 'black' : '#f9c767')};
+      transition: all 0.5s ease-out;
+
+      &:nth-child(1) {
+        transform: ${(props) => (props.showCurtainMenu ? 'rotate(45deg)' : 'none')};
+        translate: ${(props) => (props.showCurtainMenu ? '0 1rem' : '')};
+        
+      }
+      &:nth-child(2) {
+        opacity: ${(props) => (props.showCurtainMenu ? '0' : '')};
+      }
+      &:nth-child(3) {
+        transform: ${(props) => (props.showCurtainMenu ? 'rotate(315deg)' : 'none')};
+        translate: ${(props) => (props.showCurtainMenu ? '0 -1rem' : '')};
+      }
+    }
   }
 `
 
@@ -57,7 +77,7 @@ const CurtainMenu = styled.div`
   right: 0;
   bottom: 0;
   background-color: rgba(225, 225, 225, 0.9);
-  z-index: 101;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -68,7 +88,7 @@ const CurtainMenu = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    z-index: 102;
+    z-index: 2;
   }
   a#logoff {
     display: ${(props) => (props.currentUser ? '' : 'none')};
@@ -82,12 +102,7 @@ const CurtainMenu = styled.div`
 `
 
 export default function Layout(props) {
-  const {
-    currentUser,
-    showCurtainMenu,
-    setShowCurtainMenu,
-    handleLogout,
-  } = props
+  const { currentUser, showCurtainMenu, setShowCurtainMenu, handleLogout } = props
   const { pathname } = useLocation()
 
   return (
@@ -99,9 +114,7 @@ export default function Layout(props) {
         currentUser={currentUser}
       >
         <div className='content-wrapper'>
-          <Link to='/login'>
-            {currentUser ? '' : 'Login/Register'}
-          </Link>
+          <Link to='/login'>{currentUser ? '' : 'Login/Register'}</Link>
           {pathname === '/green-room' ? (
             <Link to='/'>Home & Scheduling</Link>
           ) : (
@@ -113,7 +126,7 @@ export default function Layout(props) {
           </Link>
         </div>
       </CurtainMenu>
-      <Header>
+      <Header showCurtainMenu={showCurtainMenu}>
         <Link to='/'>
           <div className='img-wrapper'>
             <img
@@ -148,9 +161,7 @@ export default function Layout(props) {
 
           <div
             className='burger-menu'
-            onClick={() =>
-              setShowCurtainMenu((prevState) => !prevState)
-            }
+            onClick={() => setShowCurtainMenu((prevState) => !prevState)}
           >
             <span></span>
             <span></span>
