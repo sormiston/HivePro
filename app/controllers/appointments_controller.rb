@@ -10,8 +10,6 @@ class AppointmentsController < ApplicationController
     @start_time = DateTime.parse(params[:dt])
     @dur = params[:dur].to_i
 
-    # credit for Line 15 due to Daniel Beardsley:
-    # https://stackoverflow.com/questions/238684/subtract-n-hours-from-a-datetime-in-ruby
     @end_time = (@start_time.to_time + @dur.hours).to_datetime
     @appointments = Appointment
                     .where('? >= booking_hour_start AND ? < booking_hour_end', @start_time, @start_time)
@@ -31,7 +29,7 @@ class AppointmentsController < ApplicationController
     render json: @appointments, include: :room
   end
 
-  # 🦄 "AUTOMAGICAL" 🦄
+ 
   # GET /appointments/1
   def show
     render json: @appointment
